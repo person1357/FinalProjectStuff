@@ -8,6 +8,7 @@ public ResourceGenerator()
 }
 public int setResources(int r)
 {
-	return 0;
+	resourcePerSecond = r;
+	return resourcePerSecond;
 }
 }
