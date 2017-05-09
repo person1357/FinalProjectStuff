@@ -5,6 +5,6 @@ import javax.swing.event.*;     // access to JSlider events
 import java.util.*;
 import apcslib.Format;
 import chn.util.*;
-public class GuiClass {
+public class GuiClass implements ActionListener{
 
 }
