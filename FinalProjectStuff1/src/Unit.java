@@ -5,10 +5,10 @@ public class Unit {
 	private Boolean alive;
 	private int health;
 	private int damage;
-	private int speed;
-	private int cost;
-	private int attackDistance;
-	private String weaponType;
+	//private int speed;
+	//private int cost;
+	//private int attackDistance;
+	//private String weaponType;
 
 	// String weaponType;
 

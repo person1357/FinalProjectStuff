@@ -1,9 +1,9 @@
 import java.util.*;
 public class TrackAry {
-private ArrayList<Unit> info;////(?)
+private ArrayList<Unit> info;
 public TractAry()
 {
-	info = newArrayList<>;
+	info = newArrayList<Unit>;
 }
 public void makeUnit()
 {
