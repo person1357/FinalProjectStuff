@@ -7,9 +7,9 @@ public class ResourceGenerator
 	{
 		resources = 0;
 	}
-	public void setResources() 
+	public void addResources(int r) 
 	{
-		resources += 100;
+		resources += r;
 	}
 	public int getResources()
 	{
