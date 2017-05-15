@@ -1,23 +1,23 @@
 public class Unit {
-	private String name;
+	private int id;
 	private int health;
 	private int damage;
 	private int cost;
 	private int loc;
 
 	public Unit() {
-		name = "";
+		id = -1;
 		health = 0;
 		damage = 0;
 		cost = 0;
 	}
 
-	public void setName(String newName) {
-		name = newName;
+	public void setID(int n) {
+		id = n;
 	}
 
-	public String getName() {
-		return name;
+	public int getID() {
+		return id;
 	}
 	public void setHealth(int nHealth) {
 		health = nHealth;
