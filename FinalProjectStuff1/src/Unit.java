@@ -1,7 +1,7 @@
 public class Unit 
 {
 	private String name;
-	private Boolean collision;
+	private Boolean isEnemy;
 	private Boolean canAttack;
 	private Boolean alive;
 	private int health;
@@ -11,19 +11,22 @@ public class Unit
 	private int attackDistance;
 	private String weaponType;
 
+	private int loc;
+
 	// String weaponType;
 
-	public Unit(String n, int aDistance, int c, int d, int s) {
-		name = n;
-		collision = false;
-		alive = true;
+	public Unit()
+	{
+		name = "";
+		isEnemy = false;
+		alive =  true;
 		canAttack = true;
-		health = 100;
-		damage = d;
-		speed = s;
-		cost = c;
-		attackDistance = aDistance;
-		
+		health = 0;
+		damage = 0;
+		speed = 0;
+		cost = 0;
+		attackDistance = 0;	
+		danger = false;
 	}
 
 	public void setName(String newName) {
@@ -49,4 +52,16 @@ public class Unit
 	public int getHealth() {
 		return health;
 	}
+/*	public void setDanger(boolean dLevel)
+	{
+		danger = dLevel;
+	}
+	public boolean getDanger()
+	{
+		return danger;
+	}
+	public int updateLoc()
+	{*/
+		
+
 }
