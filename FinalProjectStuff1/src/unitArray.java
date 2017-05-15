@@ -8,6 +8,7 @@ public class unitArray {
 	}
 	public void makeUnit()
 	{
+		Unit a = new Unit();
 		info.add();///////ALL THE INFORMATION OF THE NEW UNIT
 	}
 	public ArrayList<Unit> getArray()
