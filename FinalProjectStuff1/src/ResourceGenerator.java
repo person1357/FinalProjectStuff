@@ -1,14 +1,18 @@
 
-public class ResourceGenerator {
-private int resourcePerSecond;
+public class ResourceGenerator 
+{
+	private int resources;
 
-public ResourceGenerator()
-{
-	resourcePerSecond = 0;
-}
-public int setResources(int r)
-{
-	resourcePerSecond = r;
-	return resourcePerSecond;
-}
+	public ResourceGenerator()
+	{
+		resources = 0;
+	}
+	public void setResources() 
+	{
+		resources += 100;
+	}
+	public int getResources()
+	{
+		return resources;
+	} 
 }

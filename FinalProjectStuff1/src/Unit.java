@@ -1,79 +1,53 @@
 public class Unit {
 	private String name;
-	private Boolean collision;
-	private Boolean canAttack;
-	private Boolean alive;
 	private int health;
 	private int damage;
-	//private int speed;
-	//private int cost;
-	//private int attackDistance;
-	//private String weaponType;
+	private int cost;
+	private int loc;
 
-	// String weaponType;
-
-	public Unit(){}
-	
-	public Unit(String n, int aDistance, int c, int d, int s) 
-	{
-		name = n;
-		collision = false;
-		alive = true;
-		canAttack = true;
-		health = 100;
-		damage = d;
-		speed = s;
-		cost = c;
-		attackDistance = aDistance;
-
+	public Unit() {
+		name = "";
+		health = 0;
+		damage = 0;
+		cost = 0;
 	}
 
-	
-	public void setName(String newName) 
-	{
+	public void setName(String newName) {
 		name = newName;
 	}
 
-	public String getName() 
-	{
+	public String getName() {
 		return name;
 	}
-
-	public void setSpeed(int nSpeed) 
-	{
-		speed = nSpeed;
-	}
-
-	public int getSpeed() 
-	{
-		return speed;
-	}
-
-	public void setHealth(int nHealth) 
-	{
-
+	public void setHealth(int nHealth) {
 		health = nHealth;
 	}
 
-	public int getHealth() 
-	{
+	public int getHealth() {
 		return health;
 	}
-
-	public int takeDamage() 
+	public void setDamage(int dmg)
 	{
-			
-		return health - damage;
+		damage = dmg;
 	}
-
-	public void move() 
+	public int getDamage()
 	{
-
+		return damage;
 	}
-
-	public void addUnit()
+	public void setCost(int c)
 	{
-		
-
+		cost = c;
+	}
+	public int getCost()
+	{
+		return cost;
+	}
+	public void setLoc(int location)
+	{
+		loc = location;
+	}
+	public int getLoc()
+	{
+		return loc;
 	}
 }
