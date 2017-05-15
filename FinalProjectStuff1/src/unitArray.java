@@ -4,12 +4,12 @@ public class unitArray {
 	private ArrayList<Unit> info;////(?)
 	public unitArray()
 	{
-		info = newArrayList<>;
+		info = new ArrayList<Unit>();
 	}
 	public void makeUnit()
 	{
 		Unit a = new Unit();
-		info.add();///////ALL THE INFORMATION OF THE NEW UNIT
+		info.add(a);///////ALL THE INFORMATION OF THE NEW UNIT
 	}
 	public ArrayList<Unit> getArray()
 	{
