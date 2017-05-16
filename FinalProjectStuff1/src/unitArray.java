@@ -15,4 +15,14 @@ public class unitArray {
 	{
 		return info;
 	}
+	public void updateArray()
+	{
+		for(Unit a : info)
+		{
+			if(a.getHealth()==0)
+			{
+				info.remove(a);
+			}
+		}
+	}
 }
