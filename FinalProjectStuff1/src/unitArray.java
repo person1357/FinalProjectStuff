@@ -6,9 +6,12 @@ public class unitArray {
 	{
 		info = new ArrayList<Unit>();
 	}
-	public void makeUnit()
+	public void makeUnit(String name, int health, int damage)//GUI needs to pass in these paremeters as user chooses
 	{
 		Unit a = new Unit();
+		a.setName(name);
+		a.setHealth(health);
+		a.setDamage(damage);
 		info.add(a);///////ALL THE INFORMATION OF THE NEW UNIT
 	}
 	public ArrayList<Unit> getArray()
