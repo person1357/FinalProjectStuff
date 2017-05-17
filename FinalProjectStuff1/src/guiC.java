@@ -7,6 +7,9 @@ import javax.swing.event.*;     // access to JSlider events
 
 import java.util.*;
 
+// https://docs.oracle.com/javase/tutorial/uiswing/misc/timer.html 
+//use this link for reference for how to use swing timer
+
 public class guiC extends JFrame implements ActionListener{
     private JButton startButton;
     private JButton unit1;
