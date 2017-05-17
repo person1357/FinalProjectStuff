@@ -43,8 +43,6 @@ public class guiC extends JFrame{
                 System.exit(0);
             }
         });
-    	// Timer
-    	
     	// STEP 6: set window size and show window
         setSize(1000,1800);
         setVisible(true);
@@ -56,14 +54,20 @@ public class guiC extends JFrame{
 			for(int a=1; a<8;a++)
 			{
 				if(event.getSource() == buttonArray[a])
-					RunnerClass.update(a);
+					RunnerClass.createUnit(a);
 			}
 			if(event.getSource() == startButton)
-			{// construction a Swing timer that goes off every 1000 msec (1 sec)
-				timer = new javax.swing.Timer(1000, this);
-				timer.start();// timer starts here
-			}
+				{// construction a Swing timer that goes off every 1000 msec (1 sec)
+					timer = new javax.swing.Timer(1000, this);
+					timer.start();// timer starts here
+				}
 			}
 		}
+	public void actionPerformed(ActionEvent evt) 
+	{
+		//update every second
+		RunnerClass.update();
+		//runner update should return array for gui to change unit loca ??
+	}
 	}		
         
