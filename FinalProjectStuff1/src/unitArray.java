@@ -13,7 +13,7 @@ public class unitArray {
 
         if(unitID == 1)
         {
-            Unit u1 = new Unit(1,10,50,100);
+            Unit u1 = new Unit(1, 50, 10, 100);
             info.add(u1);
         }
         if(unitID == 2)
