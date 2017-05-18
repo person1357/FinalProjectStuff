@@ -56,7 +56,7 @@ public class unitArray {
     {
         for(Unit a : info)
         {
-            if(a.getHealth()==0)
+            if(a.getHealth() <= 0)
             {
                 info.remove(a);
             }
