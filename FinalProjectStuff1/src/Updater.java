@@ -1,27 +1,23 @@
 
 
-public class RunnerClass {
-	private static unitArray unitPlayer;
-	private static unitArray unitEnemy;
+public class Updater {
+	private  unitArray unitPlayer;
+	private  unitArray unitEnemy;
 	private int count;
 	private int resource;
-	
-	public static void main(String[] args)
+	public Updater()
 	{
-	    guiC game = new guiC();
-	   // JFrame f = new JFrame("MLG StickFight");
-	  //  game.initFrame(f);
 	    //initialize array for units
 	    unitPlayer = new unitArray();
 	    
 	    //initialize int resource
 	}
-	public static void update() {
+	public void update() {
 		count++;
 		resource += 10;
 		
 	} 
-	public static void createUnit(int a) {
+	public void createUnit(int a) {
 		int b = RGen.getResources();
 		if (a==1 && b >= 100)
 		{
