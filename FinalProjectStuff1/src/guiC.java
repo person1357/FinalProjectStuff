@@ -57,17 +57,24 @@ public class guiC extends JFrame{
 					RunnerClass.createUnit(a);
 			}
 			if(event.getSource() == startButton)
-				{// construction a Swing timer that goes off every 1000 msec (1 sec)
-					timer = new javax.swing.Timer(1000, this);
+				{
+					// construction a Swing timer that goes off every 1000 msec (1 sec)
+				ActionListener taskPreformer= new ActionListener()
+				{
+					public void actionPerformed(ActionEvent evt) 
+					{
+						//update every second
+						RunnerClass.update();
+						//runner update should return array for gui to change unit loca ??
+					}
+				};
+				timer = new javax.swing.Timer(1000, taskPreformer);
+					
 					timer.start();// timer starts here
 				}
 			}
-		}
-	public void actionPerformed(ActionEvent evt) 
-	{
-		//update every second
-		RunnerClass.update();
-		//runner update should return array for gui to change unit loca ??
 	}
+		
+	
 	}		
         
