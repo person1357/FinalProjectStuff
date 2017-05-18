@@ -23,6 +23,18 @@ public class guiC extends JFrame{
     	super("MLG StickFight");
     	Container container = getContentPane();
         container.setLayout( new GridLayout(5,9) );
+	
+	//add health and resource to the container
+    	b = new Base();
+    	re = new ResourceGenerator();
+        h = new JLabel("Health:");
+        r = new JLabel("Resource:");
+    	health.setText(b.toString());
+    	resource.setText(re.toString());
+    	container.add(h);
+    	container.add(health);
+    	container.add(r);
+    	container.add(resource);
     	
     	unit1 = new JButton("fish.gif");
     	buttonArray = new JButton[8];
