@@ -13,5 +13,10 @@ public class Base
 	{
 		health = health - val;
 	}
+	//need this method to let GUI display health value in textArea
+	public String toString()
+	{
+		return Integer.toString(health);
+	}
 	
 }

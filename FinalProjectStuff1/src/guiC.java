@@ -7,10 +7,7 @@ import javax.swing.event.*;     // access to JSlider events
 
 import java.util.*;
 
-// https://docs.oracle.com/javase/tutorial/uiswing/misc/timer.html 
-//use this link for reference for how to use swing timer
-
-public class guiC extends JFrame implements ActionListener{
+public class guiC extends JFrame{
     private JButton startButton;
     private JButton unit1;
     private JButton unit2;
@@ -20,23 +17,38 @@ public class guiC extends JFrame implements ActionListener{
     private JButton unit6;
     private JButton unit7;
     private JButton[] buttonArray;
+    private Timer timer;
     public guiC()
     {
+    	super("MLG StickFight");
     	Container container = getContentPane();
         container.setLayout( new GridLayout(5,9) );
+	
+	//add health and resource to the container
+    	b = new Base();
+    	re = new ResourceGenerator();
+        h = new JLabel("Health:");
+        r = new JLabel("Resource:");
+    	health.setText(b.toString());
+    	resource.setText(re.toString());
+    	container.add(h);
+    	container.add(health);
+    	container.add(r);
+    	container.add(resource);
     	
     	unit1 = new JButton("fish.gif");
     	buttonArray = new JButton[8];
-    	ButtonHandler buttonHandler = new ButtonHandler();
+    	//ButtonHandler buttonHandler = new ButtonHandler();
     	// STEP 4: add unit JButtons
     	for(int a=1; a<8;a++)
     	{
     		buttonArray[a]= new JButton();
     		container.add(buttonArray[a]);
+    		buttonArray[a].addActionListener(new ButtonHandler());
     	}
     	startButton = new JButton("Start Game");
     	container.add(startButton);
-    	startButton.addActionListener(buttonHandler);
+    	startButton.addActionListener(new ButtonHandler());
     	// STEP 5: set default close operation
     	addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
@@ -48,16 +60,26 @@ public class guiC extends JFrame implements ActionListener{
         setVisible(true);
         
     }
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		// TODO Auto-generated method stub
-		for(int a=1; a<8;a++)
-    	{
-    		if(event.getSource() == buttonArray[a])
-    			unitArray1.makeUnit(1);
-    	
-		if(event.getSource() == startButton)
-			// construction a Swing timer that goes off every 1000 msec (1 sec)
-	        Timer timer = new javax.swing.Timer(1000, this);
-			timer.start();		// timer starts here
+	private class ButtonHandler implements ActionListener{
+		public void actionPerformed(ActionEvent event) {
+			// TODO Auto-generated method stub
+			for(int a=1; a<8;a++)
+			{
+				if(event.getSource() == buttonArray[a])
+					RunnerClass.createUnit(a);
+			}
+			if(event.getSource() == startButton)
+				{// construction a Swing timer that goes off every 1000 msec (1 sec)
+					timer = new javax.swing.Timer(1000, this);
+					timer.start();// timer starts here
+				}
+			}
+		}
+	public void actionPerformed(ActionEvent evt) 
+	{
+		//update every second
+		RunnerClass.update();
+		//runner update should return array for gui to change unit loca ??
 	}
+	}		
+        
