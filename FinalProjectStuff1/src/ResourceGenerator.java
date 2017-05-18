@@ -15,4 +15,8 @@ public class ResourceGenerator
 	{
 		return resources;
 	} 
+	public String toString()
+	{
+		return Integer.toString(resources);
+	}
 }
