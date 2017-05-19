@@ -11,14 +11,15 @@ public class Updater {
 	    unitPlayer = new unitArray();
 	    
 	    //initialize int resource
+	    
 	}
 	public void update() {
-		resources =
+		resources = 
 	} 
 	public void createUnit(int a) {
 		if (a==1 && b >= 100)
 		{
-			unit1.makeUnit(1);
+			unitPlayer.makeUnit(1);
 			
 			//implement makeunit
 			//subtract resources
