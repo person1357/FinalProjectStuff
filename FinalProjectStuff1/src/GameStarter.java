@@ -5,4 +5,5 @@ public class GameStarter {
 	    guiC game = new guiC();
 	   // JFrame f = new JFrame("MLG StickFight");
 	  //  game.initFrame(f);
+	    
 }

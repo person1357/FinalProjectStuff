@@ -1,8 +1,8 @@
 
 
 public class Updater {
-	private  unitArray unitPlayer;
-	private  unitArray unitEnemy;
+	private unitArray unitPlayer;
+	private unitArray unitEnemy;
 	private int count;
 	private int resource;
 	public Updater()
@@ -13,12 +13,9 @@ public class Updater {
 	    //initialize int resource
 	}
 	public void update() {
-		count++;
-		resource += 10;
-		
+		resources =
 	} 
 	public void createUnit(int a) {
-		int b = RGen.getResources();
 		if (a==1 && b >= 100)
 		{
 			unit1.makeUnit(1);
