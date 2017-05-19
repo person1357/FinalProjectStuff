@@ -7,3 +7,4 @@ public class GameStarter {
 	  //  game.initFrame(f);
 	    
 }
+}
