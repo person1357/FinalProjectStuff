@@ -1,9 +1,11 @@
 public class Base 
 {
 	private int health;
-	public Base()
+	private int location;
+	public Base(int loc)
 	{
 		health = 100;
+		location = loc;
 	}
 	public void setHealth(int value)
 	{
@@ -12,6 +14,9 @@ public class Base
 	public void reduceHealth(int val)
 	{
 		health = health - val;
+	}
+	public int getLocation() {
+		return location;
 	}
 	//need this method to let GUI display health value in textArea
 	public String toString()
