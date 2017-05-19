@@ -5,11 +5,12 @@ public class Unit {
     private int cost;
     private int loc;
 
-    public Unit(int i,int h,int d,int c) {
+    public Unit(int i,int h,int d,int c, int location) {
         id = i;
         health = h;
         damage = d;
         cost = c;
+        loc = location;
     }
     public void setID(int n) {
         id = n;

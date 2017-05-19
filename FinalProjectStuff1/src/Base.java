@@ -19,6 +19,10 @@ public class Base
 	{
 		return health;
 	}
+	public void setLocatin(int l)
+	{
+		location = l;
+	}
 	public int getLocation() {
 		return location;
 	}

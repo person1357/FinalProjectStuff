@@ -46,6 +46,10 @@ public class unitArray {
             Unit u7 = new Unit(7, 250, 110, 450);
             info.add(u7);
         }
+        if(unitID == 8)
+        {
+        	Unit u8 = new Unit(0, )
+        }
     }
     public ArrayList<Unit> getArray()
     {
