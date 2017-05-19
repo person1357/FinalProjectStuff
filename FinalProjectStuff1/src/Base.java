@@ -15,6 +15,10 @@ public class Base
 	{
 		health = health - val;
 	}
+	public int getHealth()
+	{
+		return health;
+	}
 	public int getLocation() {
 		return location;
 	}
