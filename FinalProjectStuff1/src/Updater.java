@@ -3,6 +3,8 @@
 public class Updater {
 	private unitArray unitPlayer;
 	private unitArray unitEnemy;
+	private Base playerBase;
+	private Base enemyBase;
 	private int count;
 	private int resource;
 	public Updater()
@@ -52,5 +54,17 @@ public class Updater {
 	public void makeEnemy()
 	{
 	}
-		
+	public String checkWin()
+	{
+		if(enemyBase.getHealth() == 0)
+		{
+			return "YOU WIN";
+			//need to set up a textfield in GUI that displays this message
+		}
+		else if (playerBase.getHealth() == 0)
+		{
+			return "YOU LOSE";
+		}
+		return "GAME IN PROCESS";//this is not very necessary can be an empty string
+	}	
 }
