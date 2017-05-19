@@ -18,6 +18,10 @@ public class guiC extends JFrame{
     private JButton unit7;
     private JButton[] buttonArray;
     private Timer timer;
+    private int Base;
+    private int Resources;
+    private JTextField H;
+    private JTextField R;
     public guiC()
     {
     	super("MLG StickFight");
@@ -25,17 +29,14 @@ public class guiC extends JFrame{
         container.setLayout( new GridLayout(5,9) );
 	
 	//add health and resource to the container
-    	b = new Base();
-    	re = new ResourceGenerator();
-        h = new JLabel("Health:");
-        r = new JLabel("Resource:");
-    	health.setText(b.toString());
-    	resource.setText(re.toString());
-    	container.add(h);
-    	container.add(health);
-    	container.add(r);
-    	container.add(resource);
-    	
+        H = new JTextField (3);
+        R = new JTextField (3);
+    	Base = 100;
+    	Resources = 0;
+    	container.add(R,1,6);
+    	container.add(H,1,1);
+    	R.addActionListener(new TextFieldHandler1());
+    	H.addActionListener(new TextFieldHandler2());
     	unit1 = new JButton("fish.gif");
     	buttonArray = new JButton[8];
     	//ButtonHandler buttonHandler = new ButtonHandler();
