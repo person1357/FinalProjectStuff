@@ -49,7 +49,7 @@ public class Updater {
 			
 		}
 	}
-	public static void makeEnemy()
+	public void makeEnemy()
 	{
 	}
 		
