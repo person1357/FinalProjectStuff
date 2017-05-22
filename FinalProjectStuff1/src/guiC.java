@@ -14,6 +14,7 @@ public class guiC extends JFrame{
     private Timer timer;
     private JLabel H;
     private JLabel R;
+    private JLabel background;
     private Updater update;
     private Container container;
     private ArrayList<Unit> pAry;
@@ -32,6 +33,8 @@ public class guiC extends JFrame{
         ImageIcon u5 = new ImageIcon(clder.getResource("u5.jpg"));
         ImageIcon u6 = new ImageIcon(clder.getResource("u6.jpg"));
         ImageIcon u7 = new ImageIcon(clder.getResource("u7.jpg"));
+        ImageIcon u8 = new ImageIcon(clder.getResource("u8.jpg"));
+        ImageIcon back = new ImageIcon(clder.getResource("background.jpg"));
 	//add health and resource to the container
         H = new JLabel("Health: 500/500");
         R = new JLabel("Resource: 0");
@@ -123,7 +126,5 @@ public class guiC extends JFrame{
 				}
 			}
 	}
-		
-	
 	}		
         
