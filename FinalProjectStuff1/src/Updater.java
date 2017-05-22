@@ -24,6 +24,10 @@ public class Updater {
 	public void update() {
 		resource += 10;
 		count++;
+		checkUnit();
+		checkAttackPlayerBase();
+		checkAttackEnemyBase();
+		
 	} 
 	public void createUnit(int a) {
 		if (a==1 && resource >= 100)
@@ -170,18 +174,18 @@ public class Updater {
        }
     }
 	
-	public String checkWin()
+	public int checkWin()
 	{
 		if(enemyBase.getHealth() <= 0)
 		{
-			return "YOU WIN";
+			return 2;
 			//need to set up a textfield in GUI that displays this message
 		}
-		else if (playerBase.getHealth() == 0)
+		else if (playerBase.getHealth() <= 0)
 		{
-			return "YOU LOSE";
+			return 1;
 		}
-		return "GAME IN PROCESS";//this is not very necessary can be an empty string
+		return -1;//this is not very necessary can be an empty string
 
 	}
 
