@@ -4,6 +4,7 @@ public class Unit {
     private int damage;
     private int cost;
     private int loc;
+    boolean canMove;
 
     public Unit(int i,int h,int d,int c, int location) {
         id = i;
@@ -11,6 +12,7 @@ public class Unit {
         damage = d;
         cost = c;
         loc = location;
+        canMove = true;
     }
     public void setID(int n) {
         id = n;

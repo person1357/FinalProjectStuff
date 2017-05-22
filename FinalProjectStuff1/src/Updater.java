@@ -68,6 +68,10 @@ public class Updater {
 	}
 	public void makeEnemy()
 	{
+		if(count%240 == 0)
+		{
+			makeEnemyUnit(8);
+		}
 		if(count%180 == 0)
 		{
 			makeEnemyUnit(7);
@@ -139,38 +143,43 @@ public class Updater {
 	{
        if(unitID == 1)
        {
-           Unit u1 = new Unit(1, 50, 10, 100, 7);
+           Unit u1 = new Unit(1, 50, 10, 0, 7);
            unitEnemy.add(u1);
        }
-       if(unitID == 2)
+       else if(unitID == 2)
        {
-           Unit u2 = new Unit(2, 70, 20, 130, 7);
+           Unit u2 = new Unit(2, 70, 20, 0, 7);
            unitEnemy.add(u2);
        }
-       if(unitID == 3)
+       else if(unitID == 3)
        {
-           Unit u3 = new Unit(3, 90, 30, 170, 7);
+           Unit u3 = new Unit(3, 90, 30, 0, 7);
            unitEnemy.add(u3);
        }
-       if(unitID == 4)
+       else if(unitID == 4)
        {
-           Unit u4 = new Unit(4, 110, 50, 250, 7);
+           Unit u4 = new Unit(4, 110, 50, 0, 7);
            unitEnemy.add(u4);
        }
-       if(unitID == 5)
+       else if(unitID == 5)
        {
-           Unit u5 = new Unit(5, 130, 60, 270, 7);
+           Unit u5 = new Unit(5, 130, 60, 0, 7);
            unitEnemy.add(u5);
        }
-       if(unitID == 6)
+       else if(unitID == 6)
        {
-           Unit u6 = new Unit(6, 150, 80, 300, 7);
+           Unit u6 = new Unit(6, 150, 80, 0, 7);
            unitEnemy.add(u6);
        }
-       if(unitID == 7)
+       else if(unitID == 7)
        {
-           Unit u7 = new Unit(7, 250, 110, 450, 7);
+           Unit u7 = new Unit(7, 250, 110, 0, 7);
            unitEnemy.add(u7);
+       }
+       else if(unitID == 8)
+       {
+    	   Unit u8 = new Unit(8, 1000, 1000, 0, 8);
+    	   unitEnemy.add(u8);
        }
     }
 	
@@ -219,10 +228,13 @@ public class Updater {
 				if(e.getLoc() - 1 == playerBase.getLocation())//location of enemy base
 				{
 					playerBase.setHealth(playerBase.getHealth() - e.getDamage());
+				
+				}
+				
 				}
 			}
 		}
-	}
+	
 	
 	public void checkAttackEnemyBase()
 	{
