@@ -83,4 +83,25 @@ public class Updater {
 		}
 		
 	}
+	public void checkAttackPlayerBase()
+	{
+		for (Unit e: unitEnemy)
+		{
+			if(e.getLoc() + 1 == 8)//location of enemy base
+			{
+				playerBase.setHealth(playerBase.getHealth() - e.getDamage());
+			}
+		}
+	}
+	
+	public void checkAttackEnemyBase()
+	{
+		for(Unit p: unitPlayer)
+		{
+			if(p.getLoc() - 1 == 0)//location of player base
+			{
+				enemyBase.setHealth(enemyBase.getHealth() - p.getDamage());
+			}
+		}
+	}
 }
