@@ -204,24 +204,39 @@ public class Updater {
 	}
 	public void checkAttackPlayerBase()
 	{
-		for (Unit e: unitEnemy)
+		if(playerBase.getHealth() == 0)
 		{
-			if(e.getLoc() + 1 == 8)//location of enemy base
+			checkWin();
+		}
+		else 
+		{
+			for (Unit e: unitEnemy)
 			{
-				playerBase.setHealth(playerBase.getHealth() - e.getDamage());
+				if(e.getLoc() + 1 == 8)//location of enemy base
+				{
+					playerBase.setHealth(playerBase.getHealth() - e.getDamage());
+				}
 			}
 		}
 	}
 	
 	public void checkAttackEnemyBase()
 	{
-		for(Unit p: unitPlayer)
+		if(enemyBase.getHealth() == 0)
 		{
-			if(p.getLoc() - 1 == 0)//location of player base
+			checkWin();
+		}
+		else 
+		{
+			for(Unit p: unitPlayer)
 			{
-				enemyBase.setHealth(enemyBase.getHealth() - p.getDamage());
+				if(p.getLoc() - 1 == 0)//location of player base
+				{
+					enemyBase.setHealth(enemyBase.getHealth() - p.getDamage());
+				}
 			}
 		}
+		
 	}
 	public int getPlayerHealth()
 	{
