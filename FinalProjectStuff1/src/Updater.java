@@ -66,5 +66,21 @@ public class Updater {
 			return "YOU LOSE";
 		}
 		return "GAME IN PROCESS";//this is not very necessary can be an empty string
-	}	
+	}
+	
+	public void checkUnit()
+	{
+		for (Unit p : unitPlayer)
+		{
+			for (Unit e: unitEnemy)
+			{
+				if(p.getLoc() == e.getLoc())
+				{
+					p.setHealth(p.getHealth() - e.getDamage());
+					e.setHealth(e.getHealth() - p.getDamage());
+				}
+			}
+		}
+		
+	}
 }
