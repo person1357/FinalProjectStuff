@@ -197,7 +197,7 @@ public class Updater {
 		{
 			for (Unit e: unitEnemy)
 			{
-				if(p.getLoc() == e.getLoc())
+				if(p.getLoc() + 1 == e.getLoc())
 				{
 					p.setHealth(p.getHealth() - e.getDamage());
 					e.setHealth(e.getHealth() - p.getDamage());
@@ -216,7 +216,7 @@ public class Updater {
 		{
 			for (Unit e: unitEnemy)
 			{
-				if(e.getLoc() + 1 == 8)//location of enemy base
+				if(e.getLoc() - 1 == playerBase.getLocation())//location of enemy base
 				{
 					playerBase.setHealth(playerBase.getHealth() - e.getDamage());
 				}
@@ -234,7 +234,7 @@ public class Updater {
 		{
 			for(Unit p: unitPlayer)
 			{
-				if(p.getLoc() - 1 == 0)//location of player base
+				if(p.getLoc() + 1 == enemyBase.getLocation())//location of player base
 				{
 					enemyBase.setHealth(enemyBase.getHealth() - p.getDamage());
 				}
