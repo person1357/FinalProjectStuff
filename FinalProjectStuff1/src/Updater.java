@@ -254,5 +254,13 @@ public class Updater {
 	{
 		return resource;
 	}
+	public ArrayList<Unit> getPlayerArray()
+	{
+		return unitPlayer;
+	}
+	public ArrayList<Unit> getEnemyArray()
+	{
+		return unitEnemy;
+	}
 }
 	
