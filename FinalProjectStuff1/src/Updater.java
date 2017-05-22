@@ -208,7 +208,7 @@ public class Updater {
 	}
 	public void checkAttackPlayerBase()
 	{
-		if(playerBase.getHealth() == 0)
+		if(playerBase.getHealth() <= 0)
 		{
 			checkWin();
 		}
@@ -226,7 +226,7 @@ public class Updater {
 	
 	public void checkAttackEnemyBase()
 	{
-		if(enemyBase.getHealth() == 0)
+		if(enemyBase.getHealth() <= 0)
 		{
 			checkWin();
 		}
