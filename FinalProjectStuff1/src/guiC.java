@@ -20,31 +20,32 @@ public class guiC extends JFrame{
     private Timer timer;
     private int Base;
     private int Resources;
-    private JTextField H;
-    private JTextField R;
+    private JLabel H;
+    private JLabel R;
+    private Updater update;
     public guiC()
     {
     	super("MLG StickFight");
     	Container container = getContentPane();
         container.setLayout( new GridLayout(5,9) );
-	
+        update = new Updater();
 	//add health and resource to the container
-        H = new JTextField (3);
-        R = new JTextField (3);
+        H = new JLabel("Health:");
+        R = new JLabel("Resource:");
     	Base = 100;
     	Resources = 0;
-    	container.add(R,1,6);
-    	container.add(H,1,1);
-    	R.addActionListener(new TextFieldHandler1());
-    	H.addActionListener(new TextFieldHandler2());
+    	container.add(R,0,6);
+    	container.add(H,0,0);
+    	wefoajewofjaoiefjaoiejfwoai;fj
+    	
     	unit1 = new JButton("fish.gif");
     	buttonArray = new JButton[8];
     	//ButtonHandler buttonHandler = new ButtonHandler();
     	// STEP 4: add unit JButtons
-    	for(int a=1; a<8;a++)
+    	for(int a=0; a<7;a++)
     	{
     		buttonArray[a]= new JButton();
-    		container.add(buttonArray[a]);
+    		container.add(buttonArray[a],4,a);
     		buttonArray[a].addActionListener(new ButtonHandler());
     	}
     	startButton = new JButton("Start Game");
@@ -67,7 +68,7 @@ public class guiC extends JFrame{
 			for(int a=1; a<8;a++)
 			{
 				if(event.getSource() == buttonArray[a])
-					RunnerClass.createUnit(a);
+					update.createUnit(a);
 			}
 			if(event.getSource() == startButton)
 				{
@@ -77,7 +78,7 @@ public class guiC extends JFrame{
 					public void actionPerformed(ActionEvent evt) 
 					{
 						//update every second
-						RunnerClass.update();
+						update.update();
 						//runner update should return array for gui to change unit loca ??
 					}
 				};

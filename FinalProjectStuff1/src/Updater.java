@@ -182,6 +182,46 @@ public class Updater {
 			return "YOU LOSE";
 		}
 		return "GAME IN PROCESS";//this is not very necessary can be an empty string
+
+	}
+
+	
+	
+	public void checkUnit()
+	{
+		for (Unit p : unitPlayer)
+		{
+			for (Unit e: unitEnemy)
+			{
+				if(p.getLoc() == e.getLoc())
+				{
+					p.setHealth(p.getHealth() - e.getDamage());
+					e.setHealth(e.getHealth() - p.getDamage());
+				}
+			}
+		}
+		
+	}
+	public void checkAttackPlayerBase()
+	{
+		for (Unit e: unitEnemy)
+		{
+			if(e.getLoc() + 1 == 8)//location of enemy base
+			{
+				playerBase.setHealth(playerBase.getHealth() - e.getDamage());
+			}
+		}
+	}
+	
+	public void checkAttackEnemyBase()
+	{
+		for(Unit p: unitPlayer)
+		{
+			if(p.getLoc() - 1 == 0)//location of player base
+			{
+				enemyBase.setHealth(enemyBase.getHealth() - p.getDamage());
+			}
+		}
 	}
 }
 	
