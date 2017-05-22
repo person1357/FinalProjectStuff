@@ -18,6 +18,9 @@ public class guiC extends JFrame{
     private JLabel R;
     private Updater update;
     private Container container;
+    private ArrayList<Unit> pAry;
+    private ArrayList<Unit> eAry;
+    private eAry
     public guiC()
     {
     	super("MLG StickFight");
@@ -87,11 +90,22 @@ public class guiC extends JFrame{
 					{
 						//update every second
 						update.update();
+						int win= update.checkWin();
+						if(win==2)
+						{
+							timer.stop();
+							System.out.println("You Win");
+						}
+						if(win==1)
+						{
+							timer.stop();
+							System.out.println("You Lose");
+						}
 						//update health of base and resources
 						container.remove(H);
 						container.remove(R);
-						H = new JLabel("Health: " + update.getHealth() + "/500");
-					    R = new JLabel("Resource: "+ update.getResources());
+						H = new JLabel("Health: " + update.getPlayerHealth() + "/500");
+					    R = new JLabel("Resource: "+ update.getResource());
 					    container.add(R,0,6);
 				    	container.add(H,0,0);
 					    //runner update should return array for gui to change unit loca ??
