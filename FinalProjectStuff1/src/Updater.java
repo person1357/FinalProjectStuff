@@ -223,5 +223,17 @@ public class Updater {
 			}
 		}
 	}
+	public int getPlayerHealth()
+	{
+		return playerBase.getHealth();
+	}
+	public int getEnemyHealth()
+	{
+		return enemyBase.getHealth();
+	}
+	public int getResource()
+	{
+		return resource;
+	}
 }
 	

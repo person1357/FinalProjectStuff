@@ -4,7 +4,7 @@ public class Base
 	private int location;
 	public Base(int loc)
 	{
-		health = 100;
+		health = 400;
 		location = loc;
 	}
 	public void setHealth(int value)
