@@ -12,15 +12,12 @@ public class guiC extends JFrame{
     private JButton unit8;
     private JButton[] buttonArray;
     private Timer timer;
-    private int Base;
-    private int Resources;
     private JLabel H;
     private JLabel R;
     private Updater update;
     private Container container;
     private ArrayList<Unit> pAry;
     private ArrayList<Unit> eAry;
-    private eAry
     public guiC()
     {
     	super("MLG StickFight");
@@ -38,8 +35,6 @@ public class guiC extends JFrame{
 	//add health and resource to the container
         H = new JLabel("Health: 500/500");
         R = new JLabel("Resource: 0");
-    	Base = 100;
-    	Resources = 0;
     	container.add(R,0,6);
     	container.add(H,0,0);
 
@@ -90,6 +85,17 @@ public class guiC extends JFrame{
 					{
 						//update every second
 						update.update();
+						pAry=update.getPlayerArray();
+						eAry=update.getEnemyArray();
+						for(Unit p: pAry)
+						{
+							
+						}
+						for(Unit e: eAry)
+						{
+							
+						}
+						//check win
 						int win= update.checkWin();
 						if(win==2)
 						{
