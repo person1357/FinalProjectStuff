@@ -9,13 +9,7 @@ import java.util.*;
 
 public class guiC extends JFrame{
     private JButton startButton;
-    private JButton unit1;
-    private JButton unit2;
-    private JButton unit3;
-    private JButton unit4;
-    private JButton unit5;
-    private JButton unit6;
-    private JButton unit7;
+    private JButton unit8;
     private JButton[] buttonArray;
     private Timer timer;
     private int Base;
@@ -23,28 +17,41 @@ public class guiC extends JFrame{
     private JLabel H;
     private JLabel R;
     private Updater update;
+    private Container container;
     public guiC()
     {
     	super("MLG StickFight");
-    	Container container = getContentPane();
+    	container = getContentPane();
         container.setLayout( new GridLayout(5,9) );
         update = new Updater();
+        ClassLoader clder= this.getClass().getClassLoader();
+        ImageIcon u1 = new ImageIcon(clder.getResource("u1.jpg"));
+        ImageIcon u2 = new ImageIcon(clder.getResource("u2.jpg"));
+        ImageIcon u3 = new ImageIcon(clder.getResource("u3.jpg"));
+        ImageIcon u4 = new ImageIcon(clder.getResource("u4.jpg"));
+        ImageIcon u5 = new ImageIcon(clder.getResource("u5.jpg"));
+        ImageIcon u6 = new ImageIcon(clder.getResource("u6.jpg"));
+        ImageIcon u7 = new ImageIcon(clder.getResource("u7.jpg"));
 	//add health and resource to the container
-        H = new JLabel("Health:");
-        R = new JLabel("Resource:");
+        H = new JLabel("Health: 500/500");
+        R = new JLabel("Resource: 0");
     	Base = 100;
     	Resources = 0;
     	container.add(R,0,6);
     	container.add(H,0,0);
-    	wefoajewofjaoiefjaoiejfwoai;fj
-    	
-    	unit1 = new JButton("fish.gif");
+
     	buttonArray = new JButton[8];
     	//ButtonHandler buttonHandler = new ButtonHandler();
     	// STEP 4: add unit JButtons
+    	buttonArray[0] = new JButton(u1);
+    	buttonArray[1] = new JButton(u2);
+    	buttonArray[2] = new JButton(u3);
+    	buttonArray[3] = new JButton(u4);
+    	buttonArray[4] = new JButton(u5);
+    	buttonArray[5] = new JButton(u6);
+    	buttonArray[6] = new JButton(u7);
     	for(int a=0; a<7;a++)
     	{
-    		buttonArray[a]= new JButton();
     		container.add(buttonArray[a],4,a);
     		buttonArray[a].addActionListener(new ButtonHandler());
     	}
@@ -69,6 +76,7 @@ public class guiC extends JFrame{
 			{
 				if(event.getSource() == buttonArray[a])
 					update.createUnit(a);
+					
 			}
 			if(event.getSource() == startButton)
 				{
@@ -79,7 +87,14 @@ public class guiC extends JFrame{
 					{
 						//update every second
 						update.update();
-						//runner update should return array for gui to change unit loca ??
+						//update health of base and resources
+						container.remove(H);
+						container.remove(R);
+						H = new JLabel("Health: " + update.getHealth() + "/500");
+					    R = new JLabel("Resource: "+ update.getResources());
+					    container.add(R,0,6);
+				    	container.add(H,0,0);
+					    //runner update should return array for gui to change unit loca ??
 					}
 				};
 				timer = new javax.swing.Timer(1000, taskPreformer);
