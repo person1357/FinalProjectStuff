@@ -274,7 +274,7 @@ public class Updater {
 				}
 			}
 		}
-	
+	}
 	
 	public void checkAttackEnemyBase()
 	{

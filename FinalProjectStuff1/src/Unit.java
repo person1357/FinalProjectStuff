@@ -52,13 +52,13 @@ public class Unit {
     {
         return loc;
     }
-        public boolean canMove()
+    public boolean canMove()
     {
-    	return move;
+    	return canMove;
     }
     public void setMove(boolean m)
     {
-    	move = m;
+    	canMove = m;
     }
 }
 
