@@ -30,7 +30,7 @@ public class guiC extends JFrame{
     {
     	super("MLG StickFight");
     	container = getContentPane();
-        container.setLayout( new GridLayout(5,9) );
+        container.setLayout( (LayoutManager) new JPanel() );
         update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
         ImageIcon u1 = new ImageIcon(clder.getResource("u1.jpg"));
@@ -91,6 +91,7 @@ public class guiC extends JFrame{
         
     }
     public void paint (Graphics g )
+    /////////////////////////////////////////////////////////
     {
         // call superclass paint method
         super.paint(g);
