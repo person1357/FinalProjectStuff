@@ -4,7 +4,7 @@ public class Unit {
     private int damage;
     private int cost;
     private int loc;
-    boolean canMove;
+    boolean move;
 
     public Unit(int i,int h,int d,int c, int location) {
         id = i;
