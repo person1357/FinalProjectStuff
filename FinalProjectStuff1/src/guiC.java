@@ -3,13 +3,12 @@ import java.awt.event.*;    // access to WindowAdapter, WindowEvent
 
 import javax.swing.*;       // access to JFrame and JComponents
 import javax.swing.Timer;
-import javax.swing.event.*;     // access to JSlider events
 
 import java.util.*;
 
 public class guiC extends JFrame{
-    private JButton startButton;
-    private JButton unit8;
+    final long serialVersionUID = 1L;
+	private JButton startButton;
     private JButton[] buttonArray;
     private Timer timer;
     private JLabel H;
@@ -37,26 +36,26 @@ public class guiC extends JFrame{
         ImageIcon u1 = new ImageIcon(clder.getResource("u1.jpg"));
         ImageIcon u2 = new ImageIcon(clder.getResource("u2.jpg"));
         ImageIcon u3 = new ImageIcon(clder.getResource("u3.jpg"));
-        ImageIcon u4 = new ImageIcon(clder.getResource("u4.jpg"));
-        ImageIcon u5 = new ImageIcon(clder.getResource("u5.jpg"));
-        ImageIcon u6 = new ImageIcon(clder.getResource("u6.jpg"));
-        ImageIcon u7 = new ImageIcon(clder.getResource("u7.jpg"));
-        ImageIcon u8 = new ImageIcon(clder.getResource("u8.jpg"));
-        ImageIcon back = new ImageIcon(clder.getResource("background.jpg"));
+        //ImageIcon u4 = new ImageIcon(clder.getResource("u4.jpg"));
+        //ImageIcon u5 = new ImageIcon(clder.getResource("u5.jpg"));
+        //ImageIcon u6 = new ImageIcon(clder.getResource("u6.jpg"));
+        //ImageIcon u7 = new ImageIcon(clder.getResource("u7.jpg"));
+        //ImageIcon u8 = new ImageIcon(clder.getResource("u8.jpg"));
+        //ImageIcon back = new ImageIcon(clder.getResource("background.jpg"));
         u11=u1.getImage();
         u22=u2.getImage();
         u33=u3.getImage();
-        u44=u4.getImage();
-        u55=u5.getImage();
-        u66=u6.getImage();
-        u77=u7.getImage();
-        u88=u1.getImage();
-        background=back.getImage();
+        //u44=u4.getImage();
+        //u55=u5.getImage();
+        //u66=u6.getImage();
+        //u77=u7.getImage();
+        //u88=u8.getImage();
+        //background=back.getImage();
 	//add health and resource to the container
         H = new JLabel("Health: 500/500");
         R = new JLabel("Resource: 0");
-    	container.add(R,0,6);
-    	container.add(H,0,0);
+    	container.add(R);
+    	container.add(H);
 
     	buttonArray = new JButton[8];
     	//ButtonHandler buttonHandler = new ButtonHandler();
@@ -64,15 +63,19 @@ public class guiC extends JFrame{
     	buttonArray[0] = new JButton(u1);
     	buttonArray[1] = new JButton(u2);
     	buttonArray[2] = new JButton(u3);
-    	buttonArray[3] = new JButton(u4);
-    	buttonArray[4] = new JButton(u5);
-    	buttonArray[5] = new JButton(u6);
-    	buttonArray[6] = new JButton(u7);
-    	for(int a=0; a<7;a++)
-    	{
-    		container.add(buttonArray[a],4,a);
-    		buttonArray[a].addActionListener(new ButtonHandler());
-    	}
+    	//buttonArray[3] = new JButton(u4);
+    	///buttonArray[4] = new JButton(u5);
+    	//buttonArray[5] = new JButton(u6);
+    	//buttonArray[6] = new JButton(u7);
+    	container.add(buttonArray[0]);
+    	buttonArray[0].addActionListener(new ButtonHandler());
+    	container.add(buttonArray[1]);
+    	buttonArray[1].addActionListener(new ButtonHandler());
+    	container.add(buttonArray[2]);
+    	buttonArray[2].addActionListener(new ButtonHandler());
+    	
+    		////////////////////////////////////////
+    	
     	startButton = new JButton("Start Game");
     	container.add(startButton);
     	startButton.addActionListener(new ButtonHandler());
