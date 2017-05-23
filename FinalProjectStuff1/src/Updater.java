@@ -29,6 +29,22 @@ public class Updater {
 		checkAttackEnemyBase();
 		
 	} 
+	public ArrayList<Integer> getPlayerUnitArray() {
+		ArrayList <Integer> a = new ArrayList<Integer>();
+		for (Unit p : unitPlayer)
+		{
+			a.add(p.getID());
+		}
+		return a;
+	}
+	public ArrayList<Integer> getEnemyUnitArray() {
+		ArrayList <Integer> a = new ArrayList<Integer>();
+		for (Unit p : unitEnemy)
+		{
+			a.add(p.getID());
+		}
+		return a;
+	}
 	public void createUnit(int a) {
 		if (a==1 && resource >= 100)
 		{
@@ -266,13 +282,6 @@ public class Updater {
 	{
 		return resource;
 	}
-	public ArrayList<Unit> getPlayerArray()
-	{
-		return unitPlayer;
-	}
-	public ArrayList<Unit> getEnemyArray()
-	{
-		return unitEnemy;
-	}
+
 }
 	

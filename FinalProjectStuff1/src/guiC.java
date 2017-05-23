@@ -17,8 +17,17 @@ public class guiC extends JFrame{
     private JLabel background;
     private Updater update;
     private Container container;
-    private ArrayList<Unit> pAry;
-    private ArrayList<Unit> eAry;
+    private ArrayList<Integer> pAry;
+    private ArrayList<Integer> eAry;
+    private ImageIcon u1;
+    private ImageIcon u2;
+    private ImageIcon u3;
+    private ImageIcon u4;
+    private ImageIcon u5;
+    private ImageIcon u6;
+    private ImageIcon u7;
+    private ImageIcon u8;
+    private ImageIcon back;
     public guiC()
     {
     	super("MLG StickFight");
@@ -26,15 +35,15 @@ public class guiC extends JFrame{
         container.setLayout( new GridLayout(5,9) );
         update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
-        ImageIcon u1 = new ImageIcon(clder.getResource("u1.jpg"));
-        ImageIcon u2 = new ImageIcon(clder.getResource("u2.jpg"));
-        ImageIcon u3 = new ImageIcon(clder.getResource("u3.jpg"));
-        ImageIcon u4 = new ImageIcon(clder.getResource("u4.jpg"));
-        ImageIcon u5 = new ImageIcon(clder.getResource("u5.jpg"));
-        ImageIcon u6 = new ImageIcon(clder.getResource("u6.jpg"));
-        ImageIcon u7 = new ImageIcon(clder.getResource("u7.jpg"));
-        ImageIcon u8 = new ImageIcon(clder.getResource("u8.jpg"));
-        ImageIcon back = new ImageIcon(clder.getResource("background.jpg"));
+        u1 = new ImageIcon(clder.getResource("u1.jpg"));
+        u2 = new ImageIcon(clder.getResource("u2.jpg"));
+        u3 = new ImageIcon(clder.getResource("u3.jpg"));
+        u4 = new ImageIcon(clder.getResource("u4.jpg"));
+        u5 = new ImageIcon(clder.getResource("u5.jpg"));
+        u6 = new ImageIcon(clder.getResource("u6.jpg"));
+        u7 = new ImageIcon(clder.getResource("u7.jpg"));
+        u8 = new ImageIcon(clder.getResource("u8.jpg"));
+        back = new ImageIcon(clder.getResource("background.jpg"));
 	//add health and resource to the container
         H = new JLabel("Health: 500/500");
         R = new JLabel("Resource: 0");
@@ -66,10 +75,25 @@ public class guiC extends JFrame{
             }
         });
     	// STEP 6: set window size and show window
-        setSize(1000,1800);
+        setSize(1800,1000);
         setVisible(true);
         
     }
+    public void paint (Graphics g )
+    {
+        // call superclass paint method
+        super.paint(g);
+        
+        for(Integer p: pAry)
+    	{
+    		
+    	}
+    	for(Integer e: eAry)
+    	{
+    		
+    	}
+    }
+    
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
 			// TODO Auto-generated method stub
@@ -90,14 +114,7 @@ public class guiC extends JFrame{
 						update.update();
 						pAry=update.getPlayerArray();
 						eAry=update.getEnemyArray();
-						for(Unit p: pAry)
-						{
-							
-						}
-						for(Unit e: eAry)
-						{
-							
-						}
+						repaint();
 						//check win
 						int win= update.checkWin();
 						if(win==2)
