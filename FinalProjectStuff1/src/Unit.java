@@ -4,7 +4,7 @@ public class Unit {
     private int damage;
     private int cost;
     private int loc;
-    boolean canMove;
+    boolean move;
 
     public Unit(int i,int h,int d,int c, int location) {
         id = i;
@@ -12,7 +12,7 @@ public class Unit {
         damage = d;
         cost = c;
         loc = location;
-        canMove = true;
+        move = true;
     }
     public void setID(int n) {
         id = n;
@@ -54,11 +54,11 @@ public class Unit {
     }
     public boolean canMove()
     {
-    	return canMove;
+    	return move;
     }
     public void setMove(boolean m)
     {
-    	canMove = m;
+    	move = m;
     }
 }
 
