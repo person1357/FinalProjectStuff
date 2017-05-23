@@ -214,7 +214,23 @@ public class Updater {
 
 	}
 
-	
+	public void removeUnit()
+	{
+		for(Unit p :unitPlayer)
+		{
+			if(p.getHealth() == 0)
+			{
+				unitPlayer.remove(p);
+			}
+		}
+		for (Unit e: unitEnemy)
+		{
+			if (e.getHealth() == 0)
+			{
+				unitEnemy.remove(e);
+			}
+		}
+	}
 	
 	public void checkUnit()
 	{
@@ -223,10 +239,16 @@ public class Updater {
 			for (Unit e: unitEnemy)
 			{
 				if(p.getLoc() + 1 == e.getLoc())
-				{
-					p.setHealth(p.getHealth() - e.getDamage());
-					e.setHealth(e.getHealth() - p.getDamage());
-				}
+					{
+						p.setHealth(p.getHealth() - e.getDamage());
+						e.setHealth(e.getHealth() - p.getDamage());
+						p.setMove(false);
+						e.setMove(false);
+					}
+				else if(p.getLoc() + 2 == e.getLoc())
+					{
+						e.setMove(false);
+					}
 			}
 		}
 		
@@ -244,9 +266,11 @@ public class Updater {
 				if(e.getLoc() - 1 == playerBase.getLocation())//location of enemy base
 				{
 					playerBase.setHealth(playerBase.getHealth() - e.getDamage());
-				
+					e.setMove(false);
 				}
-				
+				else
+				{
+					e.setMove(true);
 				}
 			}
 		}
@@ -265,10 +289,33 @@ public class Updater {
 				if(p.getLoc() + 1 == enemyBase.getLocation())//location of player base
 				{
 					enemyBase.setHealth(enemyBase.getHealth() - p.getDamage());
+					p.setMove(false);
+				}
+				else
+				{
+					p.setMove(true);
 				}
 			}
 		}
 		
+	}
+	
+	public void move()
+	{
+		for(Unit p : unitPlayer)
+		{
+			if(p.canMove() == true)
+				{
+					p.setLoc(p.getLoc() + 1);
+				}
+		}
+		for(Unit e : unitEnemy)
+		{
+			if(e.canMove() == true)
+			{
+				e.setLoc(e.getLoc() - 1);
+			}
+		}
 	}
 	public int getPlayerHealth()
 	{
