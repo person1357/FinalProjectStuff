@@ -12,7 +12,7 @@ public class Unit {
         damage = d;
         cost = c;
         loc = location;
-        canMove = true;
+        move = true;
     }
     public void setID(int n) {
         id = n;
