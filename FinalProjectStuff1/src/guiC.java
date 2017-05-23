@@ -112,8 +112,8 @@ public class guiC extends JFrame{
 					{
 						//update every second
 						update.update();
-						pAry=update.getPlayerArray();
-						eAry=update.getEnemyArray();
+						pAry=update.getPlayerUnitArray();
+						eAry=update.getEnemyUnitArray();
 						repaint();
 						//check win
 						int win= update.checkWin();
