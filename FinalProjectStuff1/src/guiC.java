@@ -14,20 +14,19 @@ public class guiC extends JFrame{
     private Timer timer;
     private JLabel H;
     private JLabel R;
-    private JLabel background;
     private Updater update;
     private Container container;
     private ArrayList<Integer> pAry;
     private ArrayList<Integer> eAry;
-    private ImageIcon u1;
-    private ImageIcon u2;
-    private ImageIcon u3;
-    private ImageIcon u4;
-    private ImageIcon u5;
-    private ImageIcon u6;
-    private ImageIcon u7;
-    private ImageIcon u8;
-    private ImageIcon back;
+    private Image u11;
+    private Image u22;
+    private Image u33;
+    private Image u44;
+    private Image u55;
+    private Image u66;
+    private Image u77;
+    private Image u88;
+    private Image background;
     public guiC()
     {
     	super("MLG StickFight");
@@ -35,15 +34,24 @@ public class guiC extends JFrame{
         container.setLayout( new GridLayout(5,9) );
         update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
-        u1 = new ImageIcon(clder.getResource("u1.jpg"));
-        u2 = new ImageIcon(clder.getResource("u2.jpg"));
-        u3 = new ImageIcon(clder.getResource("u3.jpg"));
-        u4 = new ImageIcon(clder.getResource("u4.jpg"));
-        u5 = new ImageIcon(clder.getResource("u5.jpg"));
-        u6 = new ImageIcon(clder.getResource("u6.jpg"));
-        u7 = new ImageIcon(clder.getResource("u7.jpg"));
-        u8 = new ImageIcon(clder.getResource("u8.jpg"));
-        back = new ImageIcon(clder.getResource("background.jpg"));
+        ImageIcon u1 = new ImageIcon(clder.getResource("u1.jpg"));
+        ImageIcon u2 = new ImageIcon(clder.getResource("u2.jpg"));
+        ImageIcon u3 = new ImageIcon(clder.getResource("u3.jpg"));
+        ImageIcon u4 = new ImageIcon(clder.getResource("u4.jpg"));
+        ImageIcon u5 = new ImageIcon(clder.getResource("u5.jpg"));
+        ImageIcon u6 = new ImageIcon(clder.getResource("u6.jpg"));
+        ImageIcon u7 = new ImageIcon(clder.getResource("u7.jpg"));
+        ImageIcon u8 = new ImageIcon(clder.getResource("u8.jpg"));
+        ImageIcon back = new ImageIcon(clder.getResource("background.jpg"));
+        u11=u1.getImage();
+        u22=u2.getImage();
+        u33=u3.getImage();
+        u44=u4.getImage();
+        u55=u5.getImage();
+        u66=u6.getImage();
+        u77=u7.getImage();
+        u88=u1.getImage();
+        background=back.getImage();
 	//add health and resource to the container
         H = new JLabel("Health: 500/500");
         R = new JLabel("Resource: 0");
@@ -83,14 +91,42 @@ public class guiC extends JFrame{
     {
         // call superclass paint method
         super.paint(g);
-        
-        for(Integer p: pAry)
+        g.drawImage(background,1600,200,this);
+        for(int p=0; p<pAry.size(); p++)
     	{
-    		
+    		if(pAry.get(p)==1)
+    			g.drawImage(u11,1500,300,this);
+    		else if(pAry.get(p)==2)
+    			g.drawImage(u22,1500,300,this);
+    		else if(pAry.get(p)==3)
+    			g.drawImage(u33,1500,300,this);
+    		else if(pAry.get(p)==4)
+    			g.drawImage(u44,1500,300,this);
+    		else if(pAry.get(p)==5)
+    			g.drawImage(u55,1500,300,this);
+    		else if(pAry.get(p)==6)
+    			g.drawImage(u66,1500,300,this);
+    		else if(pAry.get(p)==7)
+    			g.drawImage(u77,1500,300,this);
     	}
-    	for(Integer e: eAry)
+    	for(int p=0; p<eAry.size(); p++)
     	{
-    		
+    		if(eAry.get(p)==1)
+    			g.drawImage(u11,1500,700,Color.red,this);
+    		else if(eAry.get(p)==2)
+    			g.drawImage(u22,1500,700,Color.red,this);
+    		else if(eAry.get(p)==3)
+    			g.drawImage(u33,1500,700,Color.red,this);
+    		else if(eAry.get(p)==4)
+    			g.drawImage(u44,1500,700,Color.red,this);
+    		else if(eAry.get(p)==5)
+    			g.drawImage(u55,1500,700,Color.red,this);
+    		else if(eAry.get(p)==6)
+    			g.drawImage(u66,1500,700,Color.red,this);
+    		else if(eAry.get(p)==7)
+    			g.drawImage(u77,1500,700,Color.red,this);
+    		else if(eAry.get(p)==8)
+    			g.drawImage(u88,1500,700,Color.red,this);
     	}
     }
     
@@ -112,8 +148,8 @@ public class guiC extends JFrame{
 					{
 						//update every second
 						update.update();
-						pAry=update.getPlayerArray();
-						eAry=update.getEnemyArray();
+						pAry=update.getPlayerUnitArray();
+						eAry=update.getEnemyUnitArray();
 						repaint();
 						//check win
 						int win= update.checkWin();
