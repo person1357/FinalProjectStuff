@@ -52,6 +52,14 @@ public class Unit {
     {
         return loc;
     }
+        public boolean canMove()
+    {
+    	return move;
+    }
+    public void setMove(boolean m)
+    {
+    	move = m;
+    }
 }
 
 
