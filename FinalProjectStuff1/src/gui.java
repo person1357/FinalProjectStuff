@@ -13,6 +13,7 @@ import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 import java.awt.Insets;
 
 import com.jgoodies.forms.layout.FormLayout;
@@ -35,6 +36,8 @@ import javax.swing.Box;
 
 import java.awt.SystemColor;
 import java.util.ArrayList;
+
+import javax.swing.SwingConstants;
 
 
 public class gui extends JPanel {
@@ -60,30 +63,36 @@ public class gui extends JPanel {
 		////////////////////////////
 		update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
-		ImageIcon u1 = new ImageIcon(clder.getResource("u1.jpg"));
+		ImageIcon u1 = new ImageIcon(clder.getResource("unit1.jpg"));
         ImageIcon u2 = new ImageIcon(clder.getResource("u2.jpg"));
         ImageIcon u3 = new ImageIcon(clder.getResource("u3.jpg"));
         u11=u1.getImage();
         u22=u2.getImage();
         u33=u3.getImage();
         ////////////////////////////
+     
+        ////////////////////////////
 		setBackground(SystemColor.activeCaptionText);
 		
 		JButton btnStartGame = new JButton("Start Game");
 		
-		JButton button = new JButton(u1);
+		JButton button = new JButton("6");//6
 		
-		JButton button_1 = new JButton("Unit");
+		JButton button_1 = new JButton("Uni444t");//5
 		
-		JButton button_2 = new JButton("Unit");
+		JButton button_2 = new JButton("Unit3333");//4
 		
-		JButton button_3 = new JButton("Unit");
+		JButton button_3 = new JButton("U3333223423nit");//3
 		
-		JButton button_4 = new JButton("Unit");
+		JButton button_4 = new JButton(u2);//2
 		
-		JButton button_5 = new JButton("Unit");
+		JButton button_5 = new JButton(u1);//1
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
-		JButton button_6 = new JButton("Unit");
+		JButton button_6 = new JButton("Unit");//7
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
