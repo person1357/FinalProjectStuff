@@ -58,9 +58,10 @@ public class gui extends JPanel {
     private Image u88;
     private Image background;
     private Updater update;
-    private Container container;
-	public gui() {
+    //private Container container;
+	public gui(){
 		////////////////////////////
+		GroupLayout groupLayout = new GroupLayout(this);
 		update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
 		ImageIcon u1 = new ImageIcon(clder.getResource("unit1.jpg"));
@@ -70,7 +71,7 @@ public class gui extends JPanel {
         u22=u2.getImage();
         u33=u3.getImage();
         ////////////////////////////
-     
+        //setDefaultCloseOperation(System.exit(0));
         ////////////////////////////
 		setBackground(SystemColor.activeCaptionText);
 		
@@ -88,7 +89,51 @@ public class gui extends JPanel {
 		
 		JButton button_5 = new JButton(u1);//1
 		button_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnStartGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				if(event.getSource() == btnStartGame)
+				{
+					groupLayout.removeLayoutComponent(btnStartGame);
+					// construction a Swing timer that goes off every 1000 msec (1 sec)
+				ActionListener taskPreformer= new ActionListener()
+				{
+					public void actionPerformed(ActionEvent evt) 
+					{
+						//update every second
+						update.update();
+						pAry=update.getPlayerUnitArray();
+						eAry=update.getEnemyUnitArray();
+						repaint();
+						//check win
+						int win= update.checkWin();
+						if(win==2)
+						{
+							timer.stop();
+							System.out.println("You Win");
+						}
+						if(win==1)
+						{
+							timer.stop();
+							System.out.println("You Lose");
+						}
+						/*
+						//update health of base and resources
+						container.remove(H);
+						container.remove(R);
+						H = new JLabel("Health: " + update.getPlayerHealth() + "/500");
+					    R = new JLabel("Resource: "+ update.getResource());
+					    container.add(R,0,6);
+				    	container.add(H,0,0);
+					    //runner update should return array for gui to change unit loca ??
+					*/}
+				};
+				timer = new javax.swing.Timer(1000, taskPreformer);
+					
+					timer.start();// timer starts here
+				}
 			}
 		});
 		
@@ -119,7 +164,7 @@ public class gui extends JPanel {
 		JLabel label_6 = new JLabel("150");
 		
 		JLabel label_7 = new JLabel("200");
-		GroupLayout groupLayout = new GroupLayout(this);
+		
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
