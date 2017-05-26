@@ -208,15 +208,17 @@ public class gui2 extends JFrame {
 			if(event.getSource() == SB)
 			{
 				gl_contentPane.removeLayoutComponent(SB);
-				timer = new javax.swing.Timer(1000, taskPreformer);
-				timer.start();// timer starts here
-			}
-					// construction a Swing timer that goes off every 1000 msec (1 sec)
+				ActionListener taskPreformer= new ActionListener()
+				{
+					public void actionPerformed(ActionEvent evt) 
+					{
+						// construction a Swing timer that goes off every 1000 msec (1 sec)
 						//update every second
 						update.update();
 						pAry=update.getPlayerUnitArray();
 						eAry=update.getEnemyUnitArray();
 						repaint();
+						System.out.println("2");
 						//check win
 						int win= update.checkWin();
 						if(win==2)
@@ -229,17 +231,13 @@ public class gui2 extends JFrame {
 							timer.stop();
 							JOptionPane.showMessageDialog(contentPane, "You Lose");
 						}
-						//update health of base and resources
-						
-					    //runner update should return array for gui to change unit loca ??
 					}
 				};
-		
-	
-}
-				
-			
-	/*private class TimerHandler implements ActionListener{
-		
+
+				timer = new javax.swing.Timer(1000, taskPreformer);
+				timer.start();// timer starts here
+			}
+		}
 	}
-}*/
+}
+
