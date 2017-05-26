@@ -56,6 +56,7 @@ public class gui2 extends JFrame {
     private JTextPane txtpnHealth;
     private JTextPane txtpnResources;
     private int r;
+    private int h;
 	/**
 	 * Launch the application.
 	 */
@@ -218,11 +219,12 @@ public class gui2 extends JFrame {
 						//update every second
 						update.update();
 						r=update.getResource();
+						h=update.getPlayerHealth();
 						pAry=update.getPlayerUnitArray();
 						eAry=update.getEnemyUnitArray();
 						txtpnResources.setText("Resources:" + r);
+						txtpnHealth.setText("Health: " + h + "/400");
 						repaint();
-						System.out.println("2");
 						//check win
 						int win= update.checkWin();
 						if(win==2)
