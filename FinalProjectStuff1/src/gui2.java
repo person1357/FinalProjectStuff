@@ -87,19 +87,19 @@ public class gui2 extends JFrame {
 		SB= new JButton("Start Button");
 		SB.addActionListener(new ButtonHandler());
 		u1 = new JButton(u111);//1
-		
+		u1.addActionListener(new ButtonHandler());
 		u2 = new JButton("u231");//2
-		
+		u2.addActionListener(new ButtonHandler());
 		u3 = new JButton("u14");//3
-		
+		u3.addActionListener(new ButtonHandler());
 		u4 = new JButton("21");//4
-		
+		u4.addActionListener(new ButtonHandler());
 		u5 = new JButton("24u1");
-		
+		u5.addActionListener(new ButtonHandler());
 		u6 = new JButton("u124");
-		
+		u6.addActionListener(new ButtonHandler());
 	    u7 = new JButton("u241");
-		
+		u7.addActionListener(new ButtonHandler());
 		JTextPane txtpnResources = new JTextPane();
 		txtpnResources.setText("Resources");
 		
@@ -170,7 +170,10 @@ public class gui2 extends JFrame {
 		public void actionPerformed(ActionEvent event) {
 			// TODO Auto-generated method stub
 			if(event.getSource() == u1)
-				update.createUnit(1);
+				{
+					update.createUnit(1);
+					//need a method here to paint the unit onto the screen
+				}
 			else if(event.getSource() == u2)
 				update.createUnit(2);
 			else if(event.getSource() == u3)
@@ -184,13 +187,7 @@ public class gui2 extends JFrame {
 			else if(event.getSource() == u7)
 				update.createUnit(7);
 			/////////////////////////////////////////////////////////////////////////////
-			if(event.getSource() == SB)
-				{
 					// construction a Swing timer that goes off every 1000 msec (1 sec)
-				ActionListener taskPreformer= new ActionListener()
-				{
-					public void actionPerformed(ActionEvent evt) 
-					{
 						//update every second
 						update.update();
 						pAry=update.getPlayerUnitArray();
@@ -201,20 +198,23 @@ public class gui2 extends JFrame {
 						if(win==2)
 						{
 							timer.stop();
-							System.out.println("You Win");
+							JOptionPane.showMessageDialog(contentPane, "You Win");
 						}
 						if(win==1)
 						{
 							timer.stop();
-							System.out.println("You Lose");
+							JOptionPane.showMessageDialog(contentPane, "You Lose");
 						}
 						//update health of base and resources
 						
 					    //runner update should return array for gui to change unit loca ??
 					}
 				};
-				timer = new javax.swing.Timer(1000, taskPreformer);
-				timer.addActionListener(new TimerHandler());
+	//not sure about this part			
+	/*if(event.getSource() == SB)
+				{
+					timer = new javax.swing.Timer(1000, taskPreformer);
+					timer.addActionListener(new TimerHandler());
 					timer.start();// timer starts here
 				}
 			}
