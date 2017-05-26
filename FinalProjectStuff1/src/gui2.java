@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -25,12 +26,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.awt.event.*;    // access to WindowAdapter, WindowEvent
 
+import javax.swing.*; 
+
+import java.awt.event.*;    // access to WindowAdapter, WindowEvent
+
+import javax.swing.*; 
 
 public class gui2 extends JFrame {
 
 	private JPanel contentPane;
-	private GroupLayout gl_contentPane;
 	private JButton SB;
 	private JButton u1;
 	private JButton u2;
@@ -53,10 +59,10 @@ public class gui2 extends JFrame {
     private Image u77;
     private Image u88;
     private Image background;
+    private GroupLayout gl_contentPane;
     private JTextPane txtpnHealth;
     private JTextPane txtpnResources;
     private int r;
-    private int h;
 	/**
 	 * Launch the application.
 	 */
@@ -95,6 +101,8 @@ public class gui2 extends JFrame {
 		SB= new JButton("Start Button");
 		SB.addActionListener(new ButtonHandler());
 		u1 = new JButton(u111);//1
+		ImageIcon u101 = new ImageIcon(clder.getResource("unit1 (1).jpg"));
+        u11=u101.getImage();
 		u1.addActionListener(new ButtonHandler());
 		u2 = new JButton("u231");//2
 		u2.addActionListener(new ButtonHandler());
@@ -116,7 +124,7 @@ public class gui2 extends JFrame {
 		
 		label = new JLabel("Units");
 		label.setBackground(Color.WHITE);
-		gl_contentPane = new GroupLayout(contentPane);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -181,12 +189,13 @@ public class gui2 extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		contentPane.setVisible(true);
 	}
-	public void paint (Graphics g )
-    /////////////////////////////////////////////////////////
-    {
-		
-    }
 	//////////////////////////////////////////////////////////////////////////////////////////////
+	public void paint(Graphics g)
+	{
+		super.paint(g);
+		
+	}
+	
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
 			// TODO Auto-generated method stub
@@ -194,6 +203,7 @@ public class gui2 extends JFrame {
 			if(event.getSource() == u1)
 				{
 					update.createUnit(1);
+					
 					//need a method here to paint the unit onto the screen
 				}
 			else if(event.getSource() == u2)
@@ -211,6 +221,8 @@ public class gui2 extends JFrame {
 			/////////////////////////////////////////////////////////////////////////////
 			if(event.getSource() == SB)
 			{
+				//gl_contentPane.removeLayoutComponent(SB);
+
 				ActionListener taskPreformer= new ActionListener()
 				{
 					public void actionPerformed(ActionEvent evt) 
@@ -219,23 +231,22 @@ public class gui2 extends JFrame {
 						//update every second
 						update.update();
 						r=update.getResource();
-						h=update.getPlayerHealth();
 						pAry=update.getPlayerUnitArray();
 						eAry=update.getEnemyUnitArray();
 						txtpnResources.setText("Resources:" + r);
-						txtpnHealth.setText("Health: " + h + "/400");
-						repaint();
 						//check win
 						int win= update.checkWin();
 						if(win==2)
 						{
 							timer.stop();
 							JOptionPane.showMessageDialog(contentPane, "You Win");
+							System.exit(0);
 						}
 						if(win==1)
 						{
 							timer.stop();
 							JOptionPane.showMessageDialog(contentPane, "You Lose");
+							System.exit(0);
 						}
 					}
 				};
@@ -246,4 +257,4 @@ public class gui2 extends JFrame {
 		}
 	}
 }
-
+	
