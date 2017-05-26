@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 public class gui2 extends JFrame {
 
 	private JPanel contentPane;
+	private GroupLayout gl_contentPane;
 	private JButton SB;
 	private JButton u1;
 	private JButton u2;
@@ -110,7 +112,7 @@ public class gui2 extends JFrame {
 		
 		label = new JLabel("Units");
 		label.setBackground(Color.WHITE);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -175,6 +177,11 @@ public class gui2 extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		contentPane.setVisible(true);
 	}
+	public void paint (Graphics g )
+    /////////////////////////////////////////////////////////
+    {
+		
+    }
 	//////////////////////////////////////////////////////////////////////////////////////////////
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
@@ -183,7 +190,7 @@ public class gui2 extends JFrame {
 			if(event.getSource() == u1)
 				{
 					update.createUnit(1);
-					paint(u11);//need a method here to paint the unit onto the screen
+					//need a method here to paint the unit onto the screen
 				}
 			else if(event.getSource() == u2)
 				update.createUnit(2);
@@ -198,6 +205,12 @@ public class gui2 extends JFrame {
 			else if(event.getSource() == u7)
 				update.createUnit(7);
 			/////////////////////////////////////////////////////////////////////////////
+			if(event.getSource() == SB)
+			{
+				gl_contentPane.removeLayoutComponent(SB);
+				timer = new javax.swing.Timer(1000, taskPreformer);
+				timer.start();// timer starts here
+			}
 					// construction a Swing timer that goes off every 1000 msec (1 sec)
 						//update every second
 						update.update();
@@ -224,13 +237,8 @@ public class gui2 extends JFrame {
 		
 	
 }
-				/*if(event.getSource() == SB)
-				{
-					timer = new javax.swing.Timer(1000, taskPreformer);
-					timer.addActionListener(new TimerHandler());
-					timer.start();// timer starts here
-				}
-			}
+				
+			
 	/*private class TimerHandler implements ActionListener{
 		
 	}

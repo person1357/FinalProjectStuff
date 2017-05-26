@@ -29,7 +29,7 @@ public class guiC extends JFrame{
     public guiC()
     {
     	super("MLG StickFight");
-    	container = getcontainer();
+    	container = getContainer();
         container.setLayout( (LayoutManager) new JPanel() );
         update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
