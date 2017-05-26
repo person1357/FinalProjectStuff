@@ -53,6 +53,9 @@ public class gui2 extends JFrame {
     private Image u77;
     private Image u88;
     private Image background;
+    private JTextPane txtpnHealth;
+    private JTextPane txtpnResources;
+    private int r;
 	/**
 	 * Launch the application.
 	 */
@@ -104,10 +107,10 @@ public class gui2 extends JFrame {
 		u6.addActionListener(new ButtonHandler());
 	    u7 = new JButton("u241");
 		u7.addActionListener(new ButtonHandler());
-		JTextPane txtpnResources = new JTextPane();
+		txtpnResources = new JTextPane();
 		txtpnResources.setText("Resources");
 		
-		JTextPane txtpnHealth = new JTextPane();
+		txtpnHealth = new JTextPane();
 		txtpnHealth.setText("Health");
 		
 		label = new JLabel("Units");
@@ -214,8 +217,10 @@ public class gui2 extends JFrame {
 						// construction a Swing timer that goes off every 1000 msec (1 sec)
 						//update every second
 						update.update();
+						r=update.getResource();
 						pAry=update.getPlayerUnitArray();
 						eAry=update.getEnemyUnitArray();
+						txtpnResources.setText("Resources:" + r);
 						repaint();
 						System.out.println("2");
 						//check win
