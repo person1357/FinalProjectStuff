@@ -210,7 +210,7 @@ public class gui2 extends JFrame {
 					    //runner update should return array for gui to change unit loca ??
 					}
 				};
-	//not sure about this part			
+	 //not sure about this part			
 	/*if(event.getSource() == SB)
 				{
 					timer = new javax.swing.Timer(1000, taskPreformer);
