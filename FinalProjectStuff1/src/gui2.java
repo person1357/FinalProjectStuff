@@ -207,7 +207,6 @@ public class gui2 extends JFrame {
 			/////////////////////////////////////////////////////////////////////////////
 			if(event.getSource() == SB)
 			{
-				gl_contentPane.removeLayoutComponent(SB);
 				ActionListener taskPreformer= new ActionListener()
 				{
 					public void actionPerformed(ActionEvent evt) 
