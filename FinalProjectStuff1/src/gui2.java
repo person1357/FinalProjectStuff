@@ -1,10 +1,10 @@
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 
@@ -65,6 +66,7 @@ public class gui2 extends JFrame {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the frame.
@@ -79,9 +81,9 @@ public class gui2 extends JFrame {
 		//
 		update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
-        ImageIcon u111 = new ImageIcon(clder.getResource("u1.jpg"));
-        ImageIcon u222 = new ImageIcon(clder.getResource("u2.jpg"));
-        ImageIcon u333 = new ImageIcon(clder.getResource("u3.jpg"));
+        ImageIcon u111 = new ImageIcon(clder.getResource("unit1 (1).jpg"));
+//        ImageIcon u222 = new ImageIcon(clder.getResource("u2.jpg"));
+//        ImageIcon u333 = new ImageIcon(clder.getResource("u3.jpg"));
 
 		//
 		SB= new JButton("Start Button");
@@ -162,17 +164,26 @@ public class gui2 extends JFrame {
 									.addComponent(u2, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
 									.addComponent(u1, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))))))
 		);
-		
+
+    	addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+                System.exit(0);
+            }
+        });
+    	// STEP 6: set window size and show window
+        contentPane.setSize(1800,1000);
 		contentPane.setLayout(gl_contentPane);
+		contentPane.setVisible(true);
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////////
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
 			// TODO Auto-generated method stub
+			
 			if(event.getSource() == u1)
 				{
 					update.createUnit(1);
-					//need a method here to paint the unit onto the screen
+					paint(u11);//need a method here to paint the unit onto the screen
 				}
 			else if(event.getSource() == u2)
 				update.createUnit(2);
@@ -210,16 +221,17 @@ public class gui2 extends JFrame {
 					    //runner update should return array for gui to change unit loca ??
 					}
 				};
-	 //not sure about this part			
-	/*if(event.getSource() == SB)
+		
+	
+}
+				/*if(event.getSource() == SB)
 				{
 					timer = new javax.swing.Timer(1000, taskPreformer);
 					timer.addActionListener(new TimerHandler());
 					timer.start();// timer starts here
 				}
 			}
-	}
-	private class TimerHandler implements ActionListener{
+	/*private class TimerHandler implements ActionListener{
 		
 	}
-}
+}*/
