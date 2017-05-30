@@ -1,326 +1,296 @@
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
+
+import java.awt.Component;
+
+import javax.swing.JTextPane;
+import javax.swing.JLabel;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.awt.event.*;    // access to WindowAdapter, WindowEvent
 
+import javax.swing.*; 
 
+import java.awt.event.*;    // access to WindowAdapter, WindowEvent
 
-public class Updater {
-	private ArrayList<Unit> unitPlayer;
-	private ArrayList<Unit> unitEnemy;
-	private Base playerBase;
-	private Base enemyBase;
-	private int count;
-	private int resource;
-	public Updater()
-	{
-		count = 0;
-	    //initialize array for player and enemy units
-	    unitPlayer = new ArrayList<Unit>();
-	    unitEnemy = new ArrayList<Unit>();
-	    //initialize bases
-	    playerBase = new Base(0);
-	    enemyBase = new Base(8);
-	    //initialize int resource
-	    resource = 400;
-	}
-	public void update() {
-		removeUnit();
-		checkAttackPlayerBase();
-		checkAttackEnemyBase();
-		checkUnit();
-		move();
-		resource += 10;
-		count++;
-	} 
-	public void createUnit(int a) {
-		if (a==1 && resource >= 100)
-		{
-			makePlayerUnit(1);
-			resource = resource - 100;
-		}
-		else if (a==2 && resource >= 130)
-		{
-			makePlayerUnit(2);
-			resource = resource - 130;
-		}
-		else if (a==3 && resource >= 170)
-		{
-			makePlayerUnit(3);
-			resource = resource - 170;
-		}
-		else if (a==4 && resource >= 250)
-		{
-			makePlayerUnit(4);
-			resource = resource - 250;
-		}
-		else if (a==5 && resource >= 270)
-		{
-			makePlayerUnit(5);
-			resource = resource - 270;
-		}
-		else if (a==6 && resource >= 300)
-		{
-			makePlayerUnit(6);
-			resource = resource - 300;
-		}
-		else if (a==7 && resource >= 450)
-		{
-			makePlayerUnit(7);
-			resource = resource - 450;
-		}
-	}
-	public void makeEnemy()
-	{
-		if(count%180 == 0)
-		{
-			makeEnemyUnit(7);
-		}
-		else if(count%150 == 0)
-		{
-			makeEnemyUnit(6);
-		}
-		else if(count%120 == 0)
-		{
-			makeEnemyUnit(5);
-		}
-		else if(count%90 == 0)
-		{
-			makeEnemyUnit(4);
-		}
-		else if(count%60 == 0)
-		{
-			makeEnemyUnit(3);
-		}
-		else if(count%20 == 0)
-		{
-			makeEnemyUnit(2);
-		}
-		else if(count%10 == 0)
-		{
-			makeEnemyUnit(1);
-		}
-	}
-	public void makePlayerUnit(int unitID)
-		{
-	       if(unitID == 1)
-	       {
-	          Unit u1 = new Unit(1, 50, 10, 100, 100,100);
-	          unitPlayer.add(u1);
-	       }
-	       else if(unitID == 2)
-	       {
-	          Unit u2 = new Unit(2, 70, 20, 130, 100, 100);
-	          unitPlayer.add(u2);
-	       }
-	       else if(unitID == 3)
-	       {
-	          Unit u3 = new Unit(3, 90, 30, 170, 100, 100);
-	          unitPlayer.add(u3);
-	       }
-	       else  if(unitID == 4)
-	       {
-	          Unit u4 = new Unit(4, 110, 50, 250, 100, 100);
-	          unitPlayer.add(u4);
-	       }
-	       else if(unitID == 5)
-	       {
-	          Unit u5 = new Unit(5, 130, 60, 270, 100, 100);
-	          unitPlayer.add(u5);
-	       }
-	       else if(unitID == 6)
-	       {
-	           Unit u6 = new Unit(6, 150, 80, 300, 100, 100);
-	           unitPlayer.add(u6);
-	       }
-	       else if(unitID == 7)
-	       {
-	           Unit u7 = new Unit(7, 250, 110, 450, 100, 100);
-	           unitPlayer.add(u7);
-	       }
-	    }
-	public void makeEnemyUnit(int unitID)
-	{
-       if(unitID == 1)
-       {
-           Unit u1 = new Unit(1, 50, 10, 100, 100, 800);
-           unitEnemy.add(u1);
-       }
-       if(unitID == 2)
-       {
-           Unit u2 = new Unit(2, 70, 20, 130, 100, 800);
-           unitEnemy.add(u2);
-       }
-       if(unitID == 3)
-       {
-           Unit u3 = new Unit(3, 90, 30, 170, 100, 800);
-           unitEnemy.add(u3);
-       }
-       if(unitID == 4)
-       {
-           Unit u4 = new Unit(4, 110, 50, 250, 100, 800);
-           unitEnemy.add(u4);
-       }
-       if(unitID == 5)
-       {
-           Unit u5 = new Unit(5, 130, 60, 270, 100, 800);
-           unitEnemy.add(u5);
-       }
-       if(unitID == 6)
-       {
-           Unit u6 = new Unit(6, 150, 80, 300, 100, 800);
-           unitEnemy.add(u6);
-       }
-       if(unitID == 7)
-       {
-           Unit u7 = new Unit(7, 250, 110, 450, 100, 800);
-           unitEnemy.add(u7);
-       }
-    }
-	public ArrayList<Integer> getPlayerUnitArray() {
-		ArrayList <Integer> a = new ArrayList<Integer>();
-		for (Unit p : unitPlayer)
-		{
-			a.add(p.getID());
-		}
-		return a;
-	}
-	public ArrayList<Integer> getEnemyUnitArray() {
-		ArrayList <Integer> a = new ArrayList<Integer>();
-		for (Unit p : unitEnemy)
-		{
-			a.add(p.getID());
-		}
-		return a;
-	}
-	
-	public int checkWin()
-	{
-		if(enemyBase.getHealth() <= 0)
-		{
-			return 2;
-			//need to set up a textfield in GUI that displays this message
-		}
-		else if (playerBase.getHealth() <= 0)
-		{
-			return 1;
-		}
-		return -1;//this is not very necessary can be an empty string
+import javax.swing.*; 
 
-	}
+public class gui2 extends JFrame {
 
-	public void removeUnit()
-	{
-		for(Unit p :unitPlayer)
-		{
-			if(p.getHealth() == 0)
-			{
-				unitPlayer.remove(p);
-			}
-		}
-		for (Unit e: unitEnemy)
-		{
-			if (e.getHealth() == 0)
-			{
-				unitEnemy.remove(e);
-			}
-		}
-	}
-	
-	public void checkUnit()
-	{
-		for (Unit p : unitPlayer)
-		{	
-				for (Unit e: unitEnemy)
-				{
-					if(p.getY() + 1 == e.getY())
-					{
-						p.setHealth(p.getHealth() - e.getDamage());
-						e.setHealth(e.getHealth() - p.getDamage());
-						p.setMove(false);
-						e.setMove(false);
-					}
-					else if(p.getY() + 2 == e.getY())
-					{
-						e.setMove(false);
-					}
+	private JPanel contentPane;
+	private JButton SB;
+	private JButton u1;
+	private JButton u2;
+	private JButton u3;
+	private JButton u4;
+	private JButton u5;
+	private JButton u6;
+	private JButton u7;
+	private Timer timer;
+	private JLabel label;
+	private Updater update;
+	private ArrayList<Integer> pAry;
+    private ArrayList<Integer> eAry;
+	private Image u11;
+    private Image u22;
+    private Image u33;
+    private Image u44;
+    private Image u55;
+    private Image u66;
+    private Image u77;
+    private Image u88;
+    //private Image background;
+    private Image baseP;
+    private Image baseE;
+    private GroupLayout gl_contentPane;
+    private JTextPane txtpnHealth;
+    private JTextPane txtpnResources;
+    private int r;
+    private boolean b1;
+    private boolean b2;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					gui2 frame = new gui2();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-		}
+			}
+		});
+	}
+	
+
+	/**
+	 * Create the frame.
+	 */
+	public gui2() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 900, 550);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		//
+		update = new Updater();
+        ClassLoader clder= this.getClass().getClassLoader();
+        ImageIcon u1I = new ImageIcon(clder.getResource("u1.jpg"));
+        ImageIcon u2I = new ImageIcon(clder.getResource("u2.jpg"));
+        ImageIcon u3I = new ImageIcon(clder.getResource("u3.jpg"));
+        ImageIcon u4I = new ImageIcon(clder.getResource("u4.jpg"));
+        ImageIcon u5I = new ImageIcon(clder.getResource("u5.jpg"));
+        ImageIcon u6I = new ImageIcon(clder.getResource("u6.jpg"));
+        ImageIcon u7I = new ImageIcon(clder.getResource("u7.jpg"));
+        ImageIcon u8I = new ImageIcon(clder.getResource("u8.jpg"));
+       //ImageIcon backgroundIcon = new ImageIcon(clder.getResource("background.jpg"));
+        ImageIcon basepp = new ImageIcon(clder.getResource("base1.jpg"));
+        ImageIcon baseee = new ImageIcon(clder.getResource("base2.jpg"));
+        u11=u1I.getImage();
+        u22=u2I.getImage();
+        u33=u3I.getImage();
+        u44=u4I.getImage();
+        u55=u5I.getImage();
+        u66=u6I.getImage();
+        u77=u7I.getImage();
+        u88=u8I.getImage();
+      //  background=backgroundIcon.getImage();
+        baseP=basepp.getImage();
+        baseE=baseee.getImage();
+
+		//
+		SB= new JButton("Start Button");
+		SB.addActionListener(new ButtonHandler());
+		u1 = new JButton(u1I);//1
+		u1.addActionListener(new ButtonHandler());
+		u2 = new JButton(u2I);//2
+		u2.addActionListener(new ButtonHandler());
+		u3 = new JButton(u3I);//3
+		u3.addActionListener(new ButtonHandler());
+		u4 = new JButton(u4I);//4
+		u4.addActionListener(new ButtonHandler());
+		u5 = new JButton(u5I);
+		u5.addActionListener(new ButtonHandler());
+		u6 = new JButton(u6I);
+		u6.addActionListener(new ButtonHandler());
+	    u7 = new JButton(u7I);
+		u7.addActionListener(new ButtonHandler());
+		txtpnResources = new JTextPane();
+		txtpnResources.setText("Resources");
 		
+		txtpnHealth = new JTextPane();
+		txtpnHealth.setText("Health");
+		
+		label = new JLabel("Units");
+		label.setBackground(Color.WHITE);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+							.addComponent(u1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(u2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(u3, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+							.addGap(18))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(txtpnHealth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(txtpnResources, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(u4, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(u5, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(u6, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(u7, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(SB, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(txtpnHealth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(405)
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(txtpnResources, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(SB, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+									.addComponent(u7, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+									.addComponent(u6, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+									.addComponent(u5, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+									.addComponent(u4, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+									.addComponent(u3, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+									.addComponent(u2, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+									.addComponent(u1, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))))))
+		);
+
+    	addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+                System.exit(0);
+            }
+        });
+    	// STEP 6: set window size and show window
+        contentPane.setSize(1800,1000);
+		contentPane.setLayout(gl_contentPane);
+		contentPane.setVisible(true);
 	}
-	public void checkAttackPlayerBase()
+	//////////////////////////////////////////////////////////////////////////////////////////////
+	public void paint(Graphics g)
 	{
-		if(playerBase.getHealth() <= 0)
+		super.paint(g);
+		if(b1 == true)
 		{
-			checkWin();
+			g.drawImage(u11, getX(), getY(), this);
 		}
-		else 
+		if (b2 == true)
 		{
-			for (Unit e: unitEnemy)
-			{
-				if(e.getY() - 1 == playerBase.getLocation())//location of enemy base
-				{
-					playerBase.setHealth(playerBase.getHealth() - e.getDamage());
-					e.setMove(false);
-				}
-				else
-				{
-					e.setMove(true);
-				}
-			}
-		}
-	}
-	
-	public void checkAttackEnemyBase()
-	{
-		if(enemyBase.getHealth() <= 0)
-		{
-			checkWin();
-		}
-		else 
-		{
-			for(Unit p: unitPlayer)
-			{
-				if(p.getY() + 1 == enemyBase.getLocation())//location of player base
-				{
-					enemyBase.setHealth(enemyBase.getHealth() - p.getDamage());
-					p.setMove(false);
-				}
-				else
-				{
-					p.setMove(true);
-				}
-			}
+			g.drawImage(u22,  getX(),  getY(),  this);
 		}
 		
 	}
 	
-	public void move()
-	{
-		for(Unit p : unitPlayer)
-		{
-			if(p.canMove() == true)
-				{
-					p.setY(p.getY() + 100);
-				}
-		}
-		for(Unit e : unitEnemy)
-		{
-			if(e.canMove() == true)
+	private class ButtonHandler implements ActionListener{
+		public void actionPerformed(ActionEvent event) {
+			
+			
+			if(event.getSource() == u1)
 			{
-				e.setY(e.getY() - 100);
+					update.createUnit(1);
+					b1 = true;
+					//need a method here to paint the unit onto the screen
+			}
+			else if(event.getSource() == u2)
+			{
+				update.createUnit(2);
+				b2 = true;
+			}
+			else if(event.getSource() == u3)
+				update.createUnit(3);
+			else if(event.getSource() == u4)
+				update.createUnit(4);
+			else if(event.getSource() == u5)
+				update.createUnit(5);
+			else if(event.getSource() == u6)
+				update.createUnit(6);
+			else if(event.getSource() == u7)
+				update.createUnit(7);
+			/////////////////////////////////////////////////////////////////////////////
+			
+			if(event.getSource() == SB)
+			{
+				
+						     
+				//gl_contentPane.removeLayoutComponent(SB);
+
+				ActionListener taskPreformer= new ActionListener()
+				{
+					public void actionPerformed(ActionEvent evt) 
+					{
+						// construction a Swing timer that goes off every 1000 msec (1 sec)
+						//update every second
+						update.update();
+						r=update.getResource();
+						pAry=update.getPlayerUnitArray();
+						eAry=update.getEnemyUnitArray();
+						txtpnResources.setText("Resources:" + r);
+						repaint();
+						//check win
+						int win= update.checkWin();
+						if(win==2)
+						{
+							timer.stop();
+							JOptionPane.showMessageDialog(contentPane, "You Win");
+							System.exit(0);
+						}
+						if(win==1)
+						{
+							timer.stop();
+							JOptionPane.showMessageDialog(contentPane, "You Lose");
+							System.exit(0);
+						}
+					}
+				};
+
+				timer = new javax.swing.Timer(1000, taskPreformer);
+				timer.start();// timer starts here
 			}
 		}
-	}
-	
-	public int getPlayerHealth()
-	{
-		return playerBase.getHealth();
-	}
-	public int getEnemyHealth()
-	{
-		return enemyBase.getHealth();
-	}
-	public int getResource()
-	{
-		return resource;
 	}
 }
-
+	
