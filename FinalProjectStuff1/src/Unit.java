@@ -1,52 +1,69 @@
-public class Unit 
-{
-	private String name;
-	private Boolean collision;
-	private Boolean canAttack;
-	private Boolean alive;
-	private int health;
-	private int damage;
-	private int speed;
-	private int cost;
-	private int attackDistance;
-	private String weaponType;
+public class Unit {
+    private int id;
+    private int health;
+    private int damage;
+    private int cost;
+    private int myX;
+    private int myY;
+    private boolean move;
 
-	// String weaponType;
+    public Unit(int i,int h,int d,int c, int x, int y) {
+        id = i;
+        health = h;
+        damage = d;
+        cost = c;
+        myX = x;
+        myY = y;
+        move = true;
+    }
+    public void setID(int n) {
+        id = n;
+    }
 
-	public Unit(String n, int aDistance, int c, int d, int s) {
-		name = n;
-		collision = false;
-		alive = true;
-		canAttack = true;
-		health = 100;
-		damage = d;
-		speed = s;
-		cost = c;
-		attackDistance = aDistance;
-		
-	}
+    public int getID() {
+        return id;
+    }
+    public void setHealth(int nHealth) {
+        health = nHealth;
+    }
 
-	public void setName(String newName) {
-		name = newName;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setSpeed(int nSpeed) {
-		speed = nSpeed;
-	}
-
-	public int getSpeed() {
-		return speed;
-	}
-
-	public void setHealth(int nHealth) {
-		health = nHealth;
-	}
-
-	public int getHealth() {
-		return health;
-	}
+    public int getHealth() {
+        return health;
+    }
+    public void setDamage(int dmg)
+    {
+        damage = dmg;
+    }
+    public int getDamage()
+    {
+        return damage;
+    }
+    public void setCost(int c)
+    {
+        cost = c;
+    }
+    public int getCost()
+    {
+        return cost;
+    }
+    public int getX()
+    {
+        return myX;
+    }
+    public int getY()
+    {
+        return myY;
+    }
+    public void setY(int y)
+    {
+    	myY = y;
+    }
+    public boolean canMove()
+    {
+    	return move;
+    }
+    public void setMove(boolean m)
+    {
+    	move = m;
+    }
 }
