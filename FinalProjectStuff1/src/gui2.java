@@ -48,8 +48,8 @@ public class gui2 extends JFrame {
 	private Timer timer;
 	private JLabel label;
 	private Updater update;
-	private ArrayList<Integer> pAry;
-    private ArrayList<Integer> eAry;
+	private ArrayList<Unit> pAry;
+    private ArrayList<Unit> eAry;
 	private Image u11;
     private Image u22;
     private Image u33;
@@ -65,8 +65,6 @@ public class gui2 extends JFrame {
     private JTextPane txtpnHealth;
     private JTextPane txtpnResources;
     private int r;
-    private boolean b1;
-    private boolean b2;
 	/**
 	 * Launch the application.
 	 */
@@ -90,7 +88,6 @@ public class gui2 extends JFrame {
 	public gui2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 550);
-		System.out.println("hello");
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -98,16 +95,16 @@ public class gui2 extends JFrame {
 		//
 		update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
-        ImageIcon u1I = new ImageIcon(clder.getResource("1u.jpg"));
-        ImageIcon u2I = new ImageIcon(clder.getResource("2u.jpg"));
-        ImageIcon u3I = new ImageIcon(clder.getResource("3u.jpg"));
+        ImageIcon u1I = new ImageIcon(clder.getResource("u1.jpg"));
+        ImageIcon u2I = new ImageIcon(clder.getResource("u2.jpg"));
+        ImageIcon u3I = new ImageIcon(clder.getResource("u3.jpg"));
         ImageIcon u4I = new ImageIcon(clder.getResource("u4.jpg"));
         ImageIcon u5I = new ImageIcon(clder.getResource("u5.jpg"));
         ImageIcon u6I = new ImageIcon(clder.getResource("u6.jpg"));
         ImageIcon u7I = new ImageIcon(clder.getResource("u7.jpg"));
         ImageIcon u8I = new ImageIcon(clder.getResource("u8.jpg"));
        //ImageIcon backgroundIcon = new ImageIcon(clder.getResource("background.jpg"));
-        ImageIcon basepp = new ImageIcon(clder.getResource("1base.jpg"));
+        ImageIcon basepp = new ImageIcon(clder.getResource("base1.jpg"));
         ImageIcon baseee = new ImageIcon(clder.getResource("base2.jpg"));
         u11=u1I.getImage();
         u22=u2I.getImage();
@@ -212,18 +209,72 @@ public class gui2 extends JFrame {
 		contentPane.setVisible(true);
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////////
+	
 	public void paint(Graphics g)
 	{
-		super.paint(g);
-		if(b1 == true)
+		super.paint(g);	
+		for(Unit a :pAry)
 		{
-			g.drawImage(u11, getX(), getY(), this);
+			if(a.getID() == 1)
+				{
+					g.drawImage(u11, a.getX(), a.getY(), this);
+				}
+			else if (a.getID() ==2)
+			{
+				g.drawImage(u22, a.getX(), a.getY(), this);
+			}
+			else if (a.getID() == 3)
+			{
+				g.drawImage(u33, a.getX(), a.getY(), this);
+			}
+			else if (a.getID() == 4)
+			{
+				g.drawImage(u44, a.getX(), a.getY(), this);
+			}
+			else if (a.getID() == 5)
+			{
+				g.drawImage(u55, a.getX(), a.getY(), this);
+			}
+			else if(a.getID() == 6)
+			{
+				g.drawImage(u66, a.getX(), a.getY(), this);
+			}
+			else if (a.getID() == 7)
+			{
+				g.drawImage(u77, a.getX(), a.getY(), this);
+			}
 		}
-		if (b2 == true)
+		for(Unit e :eAry)
 		{
-			g.drawImage(u22,  getX(),  getY(),  this);
+			if(e.getID() == 1)
+				{
+					g.drawImage(u11, e.getX(), e.getY(), this);
+				}
+			else if (e.getID() ==2)
+			{
+				g.drawImage(u22, e.getX(), e.getY(), this);
+			}
+			else if (e.getID() == 3)
+			{
+				g.drawImage(u33, e.getX(), e.getY(), this);
+			}
+			else if (e.getID() == 4)
+			{
+				g.drawImage(u44, e.getX(), e.getY(), this);
+			}
+			else if (e.getID() == 5)
+			{
+				g.drawImage(u55, e.getX(), e.getY(), this);
+			}
+			else if(e.getID() == 6)
+			{
+				g.drawImage(u66, e.getX(), e.getY(), this);
+			}
+			else if (e.getID() == 7)
+			{
+				g.drawImage(u77, e.getX(), e.getY(), this);
+			}
 		}
-		
 	}
 	
 	private class ButtonHandler implements ActionListener{
@@ -233,24 +284,32 @@ public class gui2 extends JFrame {
 			if(event.getSource() == u1)
 			{
 					update.createUnit(1);
-					b1 = true;
 					//need a method here to paint the unit onto the screen
 			}
 			else if(event.getSource() == u2)
 			{
 				update.createUnit(2);
-				b2 = true;
 			}
 			else if(event.getSource() == u3)
+			{
 				update.createUnit(3);
+			}
 			else if(event.getSource() == u4)
+			{
 				update.createUnit(4);
+			}
 			else if(event.getSource() == u5)
+			{
 				update.createUnit(5);
+			}
 			else if(event.getSource() == u6)
+			{
 				update.createUnit(6);
+			}
 			else if(event.getSource() == u7)
+			{
 				update.createUnit(7);
+			}
 			/////////////////////////////////////////////////////////////////////////////
 			
 			if(event.getSource() == SB)
@@ -270,6 +329,7 @@ public class gui2 extends JFrame {
 						pAry=update.getPlayerUnitArray();
 						eAry=update.getEnemyUnitArray();
 						txtpnResources.setText("Resources:" + r);
+						update.makeEnemy();
 						repaint();
 						//check win
 						int win= update.checkWin();
@@ -285,6 +345,7 @@ public class gui2 extends JFrame {
 							JOptionPane.showMessageDialog(contentPane, "You Lose");
 							System.exit(0);
 						}
+
 					}
 				};
 
