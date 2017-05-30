@@ -213,6 +213,8 @@ public class gui2 extends JFrame {
 	public void paint(Graphics g)
 	{
 		super.paint(g);	
+		g.drawImage(baseP, 0,100, this);
+		g.drawImage(baseE, 800,100, this);
 		for(Unit a :pAry)
 		{
 			if(a.getID() == 1)
