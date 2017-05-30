@@ -222,14 +222,14 @@ public class Updater {
 		{	
 				for (Unit e: unitEnemy)
 				{
-					if(p.getY() + 1 == e.getY())
+					if(p.getX() + 50 == e.getX())
 					{
 						p.setHealth(p.getHealth() - e.getDamage());
 						e.setHealth(e.getHealth() - p.getDamage());
 						p.setMove(false);
 						e.setMove(false);
 					}
-					else if(p.getY() + 2 == e.getY())
+					else if(p.getX() + 100 == e.getX())
 					{
 						e.setMove(false);
 					}
@@ -247,7 +247,7 @@ public class Updater {
 		{
 			for (Unit e: unitEnemy)
 			{
-				if(e.getY() - 1 == playerBase.getLocation())//location of enemy base
+				if(e.getX() - 50 == playerBase.getLocation())//location of enemy base
 				{
 					playerBase.setHealth(playerBase.getHealth() - e.getDamage());
 					e.setMove(false);
