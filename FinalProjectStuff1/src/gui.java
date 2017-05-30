@@ -45,6 +45,7 @@ public class gui extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+//////////////////////////////////////////////////////////////////////////////////////////////UPDATED
 	private Timer timer;
 	private ArrayList<Integer> pAry;
     private ArrayList<Integer> eAry;
@@ -57,19 +58,37 @@ public class gui extends JPanel {
     private Image u77;
     private Image u88;
     private Image background;
+    private Image baseP;
+    private Image baseE;
     private Updater update;
     //private Container container;
 	public gui(){
-		////////////////////////////
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
 		ImageIcon u1 = new ImageIcon(clder.getResource("unit1.jpg"));
         ImageIcon u2 = new ImageIcon(clder.getResource("u2.jpg"));
         ImageIcon u3 = new ImageIcon(clder.getResource("u3.jpg"));
+        ImageIcon u4 = new ImageIcon(clder.getResource("u4.jpg"));
+        ImageIcon u5 = new ImageIcon(clder.getResource("u5.jpg"));
+        ImageIcon u6 = new ImageIcon(clder.getResource("u6.jpg"));
+        ImageIcon u7 = new ImageIcon(clder.getResource("u7.jpg"));
+        ImageIcon u8 = new ImageIcon(clder.getResource("u8.jpg"));
+        ImageIcon backgroundIcon = new ImageIcon(clder.getResource("background.jpg"));
+        ImageIcon basepp = new ImageIcon(clder.getResource("base1.jpg"));
+        ImageIcon baseee = new ImageIcon(clder.getResource("base2.jpg"));
         u11=u1.getImage();
         u22=u2.getImage();
         u33=u3.getImage();
+        u44=u4.getImage();
+        u55=u5.getImage();
+        u66=u6.getImage();
+        u77=u7.getImage();
+        u88=u8.getImage();
+        background=backgroundIcon.getImage();
+        baseP=basepp.getImage();
+        baseE=baseee.getImage();
         ////////////////////////////
         //setDefaultCloseOperation(System.exit(0));
         ////////////////////////////
@@ -77,17 +96,18 @@ public class gui extends JPanel {
 		
 		JButton btnStartGame = new JButton("Start Game");
 		
-		JButton button = new JButton("6");//6
+		JButton button = new JButton(u6);//6
 		
-		JButton button_1 = new JButton("Uni444t");//5
+		JButton button_1 = new JButton(u5);//5
 		
-		JButton button_2 = new JButton("Unit3333");//4
+		JButton button_2 = new JButton(u4);//4
 		
-		JButton button_3 = new JButton("U3333223423nit");//3
+		JButton button_3 = new JButton(u3);//3
 		
 		JButton button_4 = new JButton(u2);//2
 		
 		JButton button_5 = new JButton(u1);//1
+		///////////////////////////////////////////////////////////////////////////////////////////////UPDATED
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
