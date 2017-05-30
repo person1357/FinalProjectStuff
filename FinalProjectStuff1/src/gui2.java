@@ -196,7 +196,16 @@ public class gui2 extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		contentPane.setVisible(true);
 	}
-	//////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void intructions()
+        {
+            button = new JButton("Instructions");
+	    if(button.isSelected())
+	    {
+	       text = new JTextArea("*Insert instructions*");
+	    }
+        }
+       	//////////////////////////////////////////////////////////////////////////////////////////////
 	public void paint(Graphics g)
 	{
 		super.paint(g);
