@@ -59,11 +59,12 @@ public class gui2 extends JFrame {
     private Image u77;
     private Image u88;
     private Image background;
+    private Image baseP;
+    private Image baseE;
     private GroupLayout gl_contentPane;
     private JTextPane txtpnHealth;
     private JTextPane txtpnResources;
     private int r;
-<<<<<<< HEAD
     private boolean b1;
 	/**
 	 * Launch the application.
@@ -95,28 +96,45 @@ public class gui2 extends JFrame {
 		//
 		update = new Updater();
         ClassLoader clder= this.getClass().getClassLoader();
-        ImageIcon u111 = new ImageIcon(clder.getResource("unit1 (1).jpg"));
-//        ImageIcon u222 = new ImageIcon(clder.getResource("u2.jpg"));
-//        ImageIcon u333 = new ImageIcon(clder.getResource("u3.jpg"));
+        ImageIcon u1I = new ImageIcon(clder.getResource("unit1.jpg"));
+        ImageIcon u2I = new ImageIcon(clder.getResource("u2.jpg"));
+        ImageIcon u3I = new ImageIcon(clder.getResource("u3.jpg"));
+        ImageIcon u4I = new ImageIcon(clder.getResource("u4.jpg"));
+        ImageIcon u5I = new ImageIcon(clder.getResource("u5.jpg"));
+        ImageIcon u6I = new ImageIcon(clder.getResource("u6.jpg"));
+        ImageIcon u7I = new ImageIcon(clder.getResource("u7.jpg"));
+        ImageIcon u8I = new ImageIcon(clder.getResource("u8.jpg"));
+        ImageIcon backgroundIcon = new ImageIcon(clder.getResource("background.jpg"));
+        ImageIcon basepp = new ImageIcon(clder.getResource("base1.jpg"));
+        ImageIcon baseee = new ImageIcon(clder.getResource("base2.jpg"));
+        u11=u1I.getImage();
+        u22=u2I.getImage();
+        u33=u3I.getImage();
+        u44=u4I.getImage();
+        u55=u5I.getImage();
+        u66=u6I.getImage();
+        u77=u7I.getImage();
+        u88=u8I.getImage();
+        background=backgroundIcon.getImage();
+        baseP=basepp.getImage();
+        baseE=baseee.getImage();
 
 		//
 		SB= new JButton("Start Button");
 		SB.addActionListener(new ButtonHandler());
-		u1 = new JButton(u111);//1
-		ImageIcon u101 = new ImageIcon(clder.getResource("unit1 (1).jpg"));
-        u11=u101.getImage();
+		u1 = new JButton(u1I);//1
 		u1.addActionListener(new ButtonHandler());
-		u2 = new JButton("u231");//2
+		u2 = new JButton(u2I);//2
 		u2.addActionListener(new ButtonHandler());
-		u3 = new JButton("u14");//3
+		u3 = new JButton(u3I);//3
 		u3.addActionListener(new ButtonHandler());
-		u4 = new JButton("21");//4
+		u4 = new JButton(u4I);//4
 		u4.addActionListener(new ButtonHandler());
-		u5 = new JButton("24u1");
+		u5 = new JButton(u5I);
 		u5.addActionListener(new ButtonHandler());
-		u6 = new JButton("u124");
+		u6 = new JButton(u6I);
 		u6.addActionListener(new ButtonHandler());
-	    u7 = new JButton("u241");
+	    u7 = new JButton(u7I);
 		u7.addActionListener(new ButtonHandler());
 		txtpnResources = new JTextPane();
 		txtpnResources.setText("Resources");
