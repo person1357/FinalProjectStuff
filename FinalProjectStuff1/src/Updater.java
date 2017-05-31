@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-
-
 public class Updater {
 	private ArrayList<Unit> unitPlayer;
 	private ArrayList<Unit> unitEnemy;
@@ -17,7 +15,7 @@ public class Updater {
 	    unitEnemy = new ArrayList<Unit>();
 	    //initialize bases
 	    playerBase = new Base(0);
-	    enemyBase = new Base(8);
+	    enemyBase = new Base(800);
 	    //initialize int resource
 	    resource = 400;
 	}
@@ -200,18 +198,20 @@ public class Updater {
 
 	public void removeUnit()
 	{
-		for(Unit p :unitPlayer)
+		for(int loop = 0; loop < unitPlayer.size(); loop++)
 		{
-			if(p.getHealth() == 0)
+			if(unitPlayer.get(loop).getHealth() <= 0)
 			{
-				unitPlayer.remove(p);
+				unitPlayer.remove(loop);
+				loop--;
 			}
 		}
-		for (Unit e: unitEnemy)
+		for (int loop1 = 0; loop1 <unitEnemy.size(); loop1++)
 		{
-			if (e.getHealth() == 0)
+			if (unitEnemy.get(loop1).getHealth() <= 0)
 			{
-				unitEnemy.remove(e);
+				unitEnemy.remove(loop1);
+				loop1--;
 			}
 		}
 	}
@@ -222,19 +222,22 @@ public class Updater {
 		{	
 				for (Unit e: unitEnemy)
 				{
-					if(p.getX() + 50 == e.getX())
+					if(e.getX() - p.getX() <= 80)
 					{
 						p.setHealth(p.getHealth() - e.getDamage());
 						e.setHealth(e.getHealth() - p.getDamage());
 						p.setMove(false);
 						e.setMove(false);
 					}
-					else if(p.getX() + 100 == e.getX())
-					{
-						e.setMove(false);
-					}
+					//else
+					//{
+						//p.setMove(true);
+						//e.setMove(true);
+					//}
 				}
+
 		}
+		
 		
 	}
 	public void checkAttackPlayerBase()
@@ -247,7 +250,7 @@ public class Updater {
 		{
 			for (Unit e: unitEnemy)
 			{
-				if(e.getX() - 50 == playerBase.getLocation())//location of enemy base
+				if(e.getX() - playerBase.getX() <= 80)//location of enemy base
 				{
 					playerBase.setHealth(playerBase.getHealth() - e.getDamage());
 					e.setMove(false);
@@ -270,7 +273,7 @@ public class Updater {
 		{
 			for(Unit p: unitPlayer)
 			{
-				if(p.getY() + 1 == enemyBase.getLocation())//location of player base
+				if(enemyBase.getX()- p.getX() <= 80 )//location of player base
 				{
 					enemyBase.setHealth(enemyBase.getHealth() - p.getDamage());
 					p.setMove(false);
