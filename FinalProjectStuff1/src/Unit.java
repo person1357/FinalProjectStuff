@@ -54,9 +54,9 @@ public class Unit {
     {
         return myY;
     }
-    public void setY(int y)
+    public void setX(int x)
     {
-    	myY = y;
+    	myX = x;
     }
     public boolean canMove()
     {
